@@ -3,7 +3,7 @@
 > **Graduation thesis (đồ án tốt nghiệp)** — Ho Chi Minh City University of Technology and Education (HCMUTE).
 > Complete mechanical design of a ceiling-mounted 3-DOF Delta parallel robot for high-speed pick-and-place, benchmarked against the ABB IRB 360 FlexPicker.
 
-This repository contains the SolidWorks CAD model, the MATLAB analysis and simulation code, the finite-element (FEA) results, and the machining drawings. Every conclusion is backed by data read back from the model or the solver — no assumed figures.
+This repository contains the SolidWorks CAD model, the MATLAB analysis and simulation code, the finite-element (FEA) results, and the machining drawings. Every conclusion is backed by data read back from the model or the solver — no assumed figures. All figures below are taken from the thesis report.
 
 ---
 
@@ -33,11 +33,11 @@ This repository contains the SolidWorks CAD model, the MATLAB analysis and simul
 | r | moving-platform radius | 120.6 mm |
 
 <p align="center">
-  <img src="MoPhong_DongHoc/figs/kin_arm_schematic.png" width="49%" alt="Delta robot kinematic schematic">
-  <img src="MoPhong_DongHoc/figs/pSTT07_workspace_cloud.png" width="49%" alt="Reachable workspace point cloud">
+  <img src="docs/figures/fig-2-1-delta-structure.png" width="49%" alt="Basic structure of the RUU Delta robot">
+  <img src="docs/figures/fig-2-3-cad-parameters.png" width="49%" alt="CAD model and general geometric parameters">
 </p>
 
-<p align="center"><b>Figure 1.</b> Kinematic schematic of one arm (left) and the reachable workspace point cloud enclosing the target Ø800 × 250 mm cylinder (right).</p>
+<p align="center"><b>Fig. 2.1 / 2.3.</b> Basic structure of the three-arm RUU Delta robot (left); CAD model and the general geometric parameters R, r, L, b, H (right).</p>
 
 ## 2. Kinematics verification (MATLAB R2025a)
 
@@ -48,22 +48,29 @@ The inverse and forward kinematics were implemented independently and cross-chec
 - Jacobian: **no singular points** inside the workspace; condition number κ(J) max 2.75, average 2.13; minimum forearm–bicep transmission angle 49.8°.
 
 <p align="center">
-  <img src="MoPhong_DongHoc/figs/p2_roundtrip_hist.png" width="49%" alt="FK/IK round-trip error histogram">
-  <img src="MoPhong_DongHoc/figs/p4_cond_map.png" width="49%" alt="Jacobian condition-number map">
+  <img src="docs/figures/fig-2-8-kinematics-verification.png" width="49%" alt="Simulation check of the kinematic solution">
+  <img src="docs/figures/fig-3-6-jacobian-condition.png" width="49%" alt="Jacobian condition number and transmission angle">
 </p>
 
-<p align="center"><b>Figure 2.</b> FK/IK closed-loop error distribution (left) and Jacobian condition-number map on the y = 0 section (right).</p>
+<p align="center"><b>Fig. 2.8 / 3.6.</b> Simulation check of the kinematic computation (left); distribution of the Jacobian condition number and the force-transmission angle over the working region (right).</p>
+
+<p align="center">
+  <img src="docs/figures/fig-3-4-workspace-cloud.png" width="49%" alt="Workspace point cloud">
+  <img src="docs/figures/fig-3-2-workspace-map.png" width="49%" alt="Workspace map at y = 0 with trajectory check">
+</p>
+
+<p align="center"><b>Fig. 3.4 / 3.2.</b> Workspace point cloud from the three joint-angle sweep (left); workspace map at y = 0 with the pick-and-place trajectory check (right).</p>
 
 ## 3. Motion & trajectory
 
-A 6-block Simulink model (trajectory generator → IK → FK → Jacobian → joint velocity → logging) reproduces the pick-and-place cycle (solver ode3, Δt = 2 ms, 601 samples).
+The pick-and-place cycle is planned as a fifth-order (quintic) polynomial and the joint kinematics are checked against their bounds.
 
 <p align="center">
-  <img src="MoPhong_DongHoc/figs/simulink_model.png" width="49%" alt="Simulink kinematics model">
-  <img src="MoPhong_DongHoc/figs/p5_joint_profiles.png" width="49%" alt="Joint position, velocity and acceleration profiles">
+  <img src="docs/figures/fig-3-8-quintic-trajectory.png" width="49%" alt="Quintic pick-and-place trajectory">
+  <img src="docs/figures/fig-3-9-joint-bounds.png" width="49%" alt="Joint angle, velocity and acceleration bounds">
 </p>
 
-<p align="center"><b>Figure 3.</b> Simulink model (left) and joint position / velocity / acceleration profiles over one 1.2 s cycle, peak joint speed 30.1 rpm (right).</p>
+<p align="center"><b>Fig. 3.8 / 3.9.</b> Pick-and-place trajectory interpolated with a fifth-order polynomial (left); joint angle, angular-velocity and angular-acceleration bounds along the trajectory (right). Peak joint speed 30.1 rpm.</p>
 
 ## 4. Force & dynamic analysis
 
@@ -78,18 +85,18 @@ Forearm links are solved as two-force members; joint torques are obtained throug
 | Jacobian condition number | — | 2.75 (no singularity) |
 
 <p align="center">
-  <img src="MoPhong_Luc/figs/so_do_phan_bo_luc.png" width="49%" alt="Free-body and force distribution diagram">
-  <img src="MoPhong_Luc/figs/bieu_do_noi_luc.png" width="49%" alt="Internal force diagrams N, Q, M">
+  <img src="docs/figures/fig-4-2-force-platform.png" width="49%" alt="Force diagram at the moving platform">
+  <img src="docs/figures/fig-4-3-force-passive-arm.png" width="49%" alt="Force diagram of the passive arm">
 </p>
 
-<p align="center"><b>Figure 4.</b> Free-body and force-distribution diagram (left) and internal-force diagrams N / Q / M for the bicep and forearm (right).</p>
+<p align="center"><b>Fig. 4.2 / 4.3.</b> Force diagram at the moving platform (left) and in the passive (long) arm (right).</p>
 
 <p align="center">
-  <img src="MoPhong_Luc/figs/pose_fmax_workspace.png" width="49%" alt="Peak forearm force over the workspace">
-  <img src="MoPhong_Luc/figs/joint_torques.png" width="49%" alt="Joint torque over the trajectory">
+  <img src="docs/figures/fig-4-4-force-active-arm.png" width="49%" alt="Force diagram of the active arm">
+  <img src="docs/figures/fig-4-5-joint-torque.png" width="49%" alt="Active-joint torque versus tilt angle">
 </p>
 
-<p align="center"><b>Figure 5.</b> Peak forearm force mapped over the workspace (left) and joint torque along the trajectory (right).</p>
+<p align="center"><b>Fig. 4.4 / 4.5.</b> Force diagram of the active arm (left); torque at the active joint versus tilt angle α (right).</p>
 
 ## 5. Actuator selection
 
@@ -104,11 +111,10 @@ The required joint torque is split into static and dynamic terms and multiplied 
 The initially considered TPM-010S-061T (T2B 80 N·m) is rejected — M_yc 112.5 N·m > 80 N·m. The high-torque **TPMA010S-055T** passes all three criteria.
 
 <p align="center">
-  <img src="MoPhong_Luc/figs/torque_sizing.png" width="49%" alt="Torque sizing chart">
-  <img src="MoPhong_Luc/figs/gearbox_compare.png" width="49%" alt="Gearbox option comparison">
+  <img src="docs/figures/fig-4-6-gearbox-selection.png" width="60%" alt="Selected gearmotor TPMA010S-055T">
 </p>
 
-<p align="center"><b>Figure 6.</b> Torque-sizing chart (left) and comparison of the four size-010 gearbox options (right).</p>
+<p align="center"><b>Fig. 4.6.</b> Selected gearmotor with reduction unit — Wittenstein TPMA010S-055T.</p>
 
 ## 6. Structure & materials
 
@@ -116,6 +122,12 @@ The initially considered TPM-010S-061T (T2B 80 N·m) is rejected — M_yc 112.5 
 - Forearm connecting rods: carbon fibre. Ball-joint rod ends (`60645K471`): alloy steel.
 - The base plate (`DR-001`) is split into three separate fabrication blocks — mounting plate, welded frame, and hanging lid — bolted/welded together.
 - Part numbering: `DR-000` main assembly, `DR-001…DR-007` machined parts; purchased parts keep their vendor names.
+
+<p align="center">
+  <img src="docs/figures/fig-4-1-cad-model.png" width="60%" alt="3D design model in SolidWorks">
+</p>
+
+<p align="center"><b>Fig. 4.1.</b> 3D design model in SolidWorks.</p>
 
 ## 7. Structural validation (FEA)
 
@@ -130,16 +142,11 @@ SolidWorks Simulation, static studies on the load-bearing parts with the peak dy
 | DR-001-3 Ceiling lid (aluminium) | — | ≈ 72 |
 
 <p align="center">
-  <img src="MoPhong_Ben/figs/fea_dr006_resym_vonMises.png" width="49%" alt="FEA von Mises stress, elbow clevis">
-  <img src="MoPhong_Ben/figs/fea_dr007_vonMises.png" width="49%" alt="FEA von Mises stress, moving platform">
+  <img src="docs/figures/fig-4-7-fea-base.png" width="49%" alt="von Mises stress on the base blocks">
+  <img src="docs/figures/fig-4-8-fea-arm.png" width="49%" alt="von Mises stress on the arm parts and rod">
 </p>
 
-<p align="center">
-  <img src="MoPhong_Ben/figs/fea_dr005b_vonMises.png" width="49%" alt="FEA von Mises stress, upper-arm link">
-  <img src="MoPhong_Ben/figs/fea_dr001_1_vonMises.png" width="49%" alt="FEA von Mises stress, base plate">
-</p>
-
-<p align="center"><b>Figure 7.</b> von Mises stress plots — elbow clevis, moving platform, upper-arm link and base plate. The whole-robot minimum factor of safety over the entire workspace is <b>7.1</b>.</p>
+<p align="center"><b>Fig. 4.7 / 4.8.</b> von Mises stress — DR-001-3, DR-001-2 and DR-001-1 (left); DR-006, DR-007 and connecting rod 6516K305 (right). The whole-robot minimum factor of safety over the entire workspace is <b>7.1</b>.</p>
 
 ---
 
