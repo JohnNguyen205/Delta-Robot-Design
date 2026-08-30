@@ -1,14 +1,22 @@
-# ─────────────────────────────────────────────────────────────
-#  Delta Robot Design — .gitignore
-#  Loại trừ: file tạm, cache giải, dữ liệu tái sinh được,
-#  CAD/tài liệu bên thứ ba (bản quyền), bản backup.
-# ─────────────────────────────────────────────────────────────
+# ============================================================
+#  Delta Robot Design - .gitignore
+#  Excludes: temp files, solver caches, regenerable data,
+#  third-party CAD / papers (copyright), backup copies.
+# ============================================================
 
-# --- Thư mục KHÔNG đưa lên (bên thứ ba / bản quyền / tạm) ---
-BaoCao/                       # quyển báo cáo — KHÔNG public (nội dung đã tóm trong README)
-DeltaRobot_Document/          # papers nghiên cứu, catalog ABB — bản quyền tác giả
-Catalog_Wittenstein/          # catalog + CAD hãng Wittenstein
-LinhKien/                     # CAD linh kiện mua sẵn (McMaster-Carr…)
+# --- Directories NOT published (third-party / copyright / temp) ---
+
+# thesis document - kept private (summarised in README)
+BaoCao/
+# reference research papers, ABB catalogue - author copyright
+DeltaRobot_Document/
+# Wittenstein vendor catalogue + CAD
+Catalog_Wittenstein/
+# purchased-part CAD (McMaster-Carr, etc.)
+LinhKien/
+# gripper reference screenshots only (no CAD yet)
+Gripper/
+
 _codex_tmp/
 .agents/
 .claude/
@@ -20,14 +28,14 @@ DoAnThamKhao/
 DoAnThamKhao-Rename/
 Fomat/
 
-# --- Backup (quy ước copy-file, không cần version) ---
+# --- Backups (copy-file convention, not version-controlled) ---
 **/Backup/
 *_backup_*
 *_premat*
 *_presteel*
 *_pretach*
 
-# --- SolidWorks: lock / scratch / bản dựng ---
+# --- SolidWorks: lock / scratch / build ---
 ~$*
 *.bak
 *.SLDPRT.bak
@@ -36,7 +44,7 @@ Fomat/
 swxJRNL*
 *.swp
 
-# --- SolidWorks Simulation (FEA): kết quả giải tái sinh được ---
+# --- SolidWorks Simulation (FEA): regenerable solver output ---
 *.CWR
 *.CWR2
 *.cwr
@@ -49,21 +57,21 @@ Result/
 MoPhong_Ben/MP_BEN_V2/
 MoPhong_Ben/khung_treo/*.CWR
 
-# --- MATLAB / Simulink: cache dựng ---
+# --- MATLAB / Simulink: build cache ---
 slprj/
 **/slprj/
 *.slxc
 *.autosave
 codegen/
 
-# --- Ảnh preview lớn tái sinh được (giữ .png, bỏ .bmp) ---
+# --- Large regenerable preview images (keep .png, drop .bmp) ---
 *.bmp
 
-# --- Hệ điều hành ---
+# --- OS ---
 Thumbs.db
 Desktop.ini
 .DS_Store
 
-# --- File rác gốc repo ---
+# --- Stray root files ---
 out_tmp.txt
 AGENTS.md
