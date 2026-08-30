@@ -33,11 +33,11 @@ This repository contains the SolidWorks CAD model, the MATLAB analysis and simul
 | r | moving-platform radius | 120.6 mm |
 
 <p align="center">
-  <img src="MoPhong_DongHoc/figs/kin_arm_schematic.png" width="46%" alt="Delta robot kinematic schematic">
-  <img src="MoPhong_DongHoc/figs/pSTT07_workspace_cloud.png" width="46%" alt="Reachable workspace point cloud">
+  <img src="MoPhong_DongHoc/figs/kin_arm_schematic.png" width="49%" alt="Delta robot kinematic schematic">
+  <img src="MoPhong_DongHoc/figs/pSTT07_workspace_cloud.png" width="49%" alt="Reachable workspace point cloud">
 </p>
 
-**Figure 1.** Kinematic schematic of one arm (left) and the reachable workspace point cloud enclosing the target Ø800 × 250 mm cylinder (right).
+<p align="center"><b>Figure 1.</b> Kinematic schematic of one arm (left) and the reachable workspace point cloud enclosing the target Ø800 × 250 mm cylinder (right).</p>
 
 ## 2. Kinematics verification (MATLAB R2025a)
 
@@ -48,22 +48,22 @@ The inverse and forward kinematics were implemented independently and cross-chec
 - Jacobian: **no singular points** inside the workspace; condition number κ(J) max 2.75, average 2.13; minimum forearm–bicep transmission angle 49.8°.
 
 <p align="center">
-  <img src="MoPhong_DongHoc/figs/p2_roundtrip_hist.png" width="46%" alt="FK/IK round-trip error histogram">
-  <img src="MoPhong_DongHoc/figs/p4_cond_map.png" width="46%" alt="Jacobian condition-number map">
+  <img src="MoPhong_DongHoc/figs/p2_roundtrip_hist.png" width="49%" alt="FK/IK round-trip error histogram">
+  <img src="MoPhong_DongHoc/figs/p4_cond_map.png" width="49%" alt="Jacobian condition-number map">
 </p>
 
-**Figure 2.** FK/IK closed-loop error distribution (left) and Jacobian condition-number map on the y = 0 section (right).
+<p align="center"><b>Figure 2.</b> FK/IK closed-loop error distribution (left) and Jacobian condition-number map on the y = 0 section (right).</p>
 
 ## 3. Motion & trajectory
 
 A 6-block Simulink model (trajectory generator → IK → FK → Jacobian → joint velocity → logging) reproduces the pick-and-place cycle (solver ode3, Δt = 2 ms, 601 samples).
 
 <p align="center">
-  <img src="MoPhong_DongHoc/figs/simulink_model.png" width="46%" alt="Simulink kinematics model">
-  <img src="MoPhong_DongHoc/figs/p5_joint_profiles.png" width="46%" alt="Joint position/velocity/acceleration profiles">
+  <img src="MoPhong_DongHoc/figs/simulink_model.png" width="49%" alt="Simulink kinematics model">
+  <img src="MoPhong_DongHoc/figs/p5_joint_profiles.png" width="49%" alt="Joint position, velocity and acceleration profiles">
 </p>
 
-**Figure 3.** Simulink model (left) and joint position / velocity / acceleration profiles over one 1.2 s cycle (right); peak joint speed 30.1 rpm.
+<p align="center"><b>Figure 3.</b> Simulink model (left) and joint position / velocity / acceleration profiles over one 1.2 s cycle, peak joint speed 30.1 rpm (right).</p>
 
 ## 4. Force & dynamic analysis
 
@@ -78,18 +78,18 @@ Forearm links are solved as two-force members; joint torques are obtained throug
 | Jacobian condition number | — | 2.75 (no singularity) |
 
 <p align="center">
-  <img src="MoPhong_Luc/figs/so_do_phan_bo_luc.png" width="46%" alt="Free-body / force distribution diagram">
-  <img src="MoPhong_Luc/figs/bieu_do_noi_luc.png" width="46%" alt="Internal force diagrams N, Q, M">
+  <img src="MoPhong_Luc/figs/so_do_phan_bo_luc.png" width="49%" alt="Free-body and force distribution diagram">
+  <img src="MoPhong_Luc/figs/bieu_do_noi_luc.png" width="49%" alt="Internal force diagrams N, Q, M">
 </p>
 
-**Figure 4.** Free-body and force-distribution diagram (left) and internal-force diagrams N / Q / M for the bicep and forearm (right).
+<p align="center"><b>Figure 4.</b> Free-body and force-distribution diagram (left) and internal-force diagrams N / Q / M for the bicep and forearm (right).</p>
 
 <p align="center">
-  <img src="MoPhong_Luc/figs/pose_fmax_workspace.png" width="46%" alt="Peak forearm force over the workspace">
-  <img src="MoPhong_Luc/figs/joint_torques.png" width="46%" alt="Joint torque over the trajectory">
+  <img src="MoPhong_Luc/figs/pose_fmax_workspace.png" width="49%" alt="Peak forearm force over the workspace">
+  <img src="MoPhong_Luc/figs/joint_torques.png" width="49%" alt="Joint torque over the trajectory">
 </p>
 
-**Figure 5.** Peak forearm force mapped over the workspace (left) and joint torque along the trajectory (right).
+<p align="center"><b>Figure 5.</b> Peak forearm force mapped over the workspace (left) and joint torque along the trajectory (right).</p>
 
 ## 5. Actuator selection
 
@@ -104,11 +104,11 @@ The required joint torque is split into static and dynamic terms and multiplied 
 The initially considered TPM-010S-061T (T2B 80 N·m) is rejected — M_yc 112.5 N·m > 80 N·m. The high-torque **TPMA010S-055T** passes all three criteria.
 
 <p align="center">
-  <img src="MoPhong_Luc/figs/torque_sizing.png" width="46%" alt="Torque sizing chart">
-  <img src="MoPhong_Luc/figs/gearbox_compare.png" width="46%" alt="Gearbox option comparison">
+  <img src="MoPhong_Luc/figs/torque_sizing.png" width="49%" alt="Torque sizing chart">
+  <img src="MoPhong_Luc/figs/gearbox_compare.png" width="49%" alt="Gearbox option comparison">
 </p>
 
-**Figure 6.** Torque-sizing chart (left) and comparison of the four size-010 gearbox options (right).
+<p align="center"><b>Figure 6.</b> Torque-sizing chart (left) and comparison of the four size-010 gearbox options (right).</p>
 
 ## 6. Structure & materials
 
@@ -130,89 +130,30 @@ SolidWorks Simulation, static studies on the load-bearing parts with the peak dy
 | DR-001-3 Ceiling lid (aluminium) | — | ≈ 72 |
 
 <p align="center">
-  <img src="MoPhong_Ben/figs/fea_dr006_resym_vonMises.png" width="46%" alt="FEA von Mises — elbow clevis">
-  <img src="MoPhong_Ben/figs/fea_dr007_vonMises.png" width="46%" alt="FEA von Mises — moving platform">
+  <img src="MoPhong_Ben/figs/fea_dr006_resym_vonMises.png" width="49%" alt="FEA von Mises stress, elbow clevis">
+  <img src="MoPhong_Ben/figs/fea_dr007_vonMises.png" width="49%" alt="FEA von Mises stress, moving platform">
 </p>
 
 <p align="center">
-  <img src="MoPhong_Ben/figs/fea_dr005b_vonMises.png" width="46%" alt="FEA von Mises — upper-arm link">
-  <img src="MoPhong_Ben/figs/fea_dr001_1_vonMises.png" width="46%" alt="FEA von Mises — base plate">
+  <img src="MoPhong_Ben/figs/fea_dr005b_vonMises.png" width="49%" alt="FEA von Mises stress, upper-arm link">
+  <img src="MoPhong_Ben/figs/fea_dr001_1_vonMises.png" width="49%" alt="FEA von Mises stress, base plate">
 </p>
 
-**Figure 7.** von Mises stress plots: elbow clevis, moving platform, upper-arm link and base plate. The whole-robot minimum factor of safety over the entire workspace is **7.1**.
+<p align="center"><b>Figure 7.</b> von Mises stress plots — elbow clevis, moving platform, upper-arm link and base plate. The whole-robot minimum factor of safety over the entire workspace is <b>7.1</b>.</p>
 
 ---
 
-## 8. Design pipeline (8 stages)
+## 8. Thesis chapters
 
-The whole thesis — including the report structure and the drawing set — follows this linear pipeline; each stage consumes the output of the previous one and concludes as **pass / conditional pass / not evaluated**.
-
-| # | Stage | Content | Artefacts |
-|---|---|---|---|
-| **I** | Theory basis, task, targets | Delta-robot review, problem statement, target parameters | report Ch. 1 |
-| **II** | Geometry & kinematic parameters | choose L₁, L₂, R−r, r for the Ø800 × 250 workspace; check transmission angle / condition number | `MoPhong_DongHoc/params.m` |
-| **III** | Forward / inverse kinematics & Jacobian | implement and verify IK/FK (round-trip ≈ 10⁻¹³ mm), singularity analysis | `delta_ik.m`, `delta_fk.m`, `delta_jacobian.m`, `p4_singularity.m` |
-| **IV** | Motion simulation & trajectory | workspace, quintic trajectory, 6-block Simulink model, animation | `p3_workspace.m`, `p5_trajectory.m`, `p6_animate.m`, `delta_kinematics.slx` |
-| **V** | Force & dynamic analysis | free-body diagram, internal-force diagrams N/Q/M, multi-pose load sweep | `MoPhong_Luc/force_analysis.m`, `force_diagrams.m`, `force_poses.m` |
-| **VI** | Actuator selection | M_yc / M_rms / speed criteria; reject TPM-010S-061T, select TPMA010S-055T | `MoPhong_Luc/ThuyetMinh_ChonDongCo.md` |
-| **VII** | Material selection & FEA | choose 6061-T6; FEA of the load-bearing parts + mesh convergence + multi-pose sweep | `MoPhong_Ben/KETQUA_BEN.md`, `KETQUA_BEN_DAPOSE.md` |
-| **VIII** | CAD assembly, machining drawings & BOM | finalise `DR-000`, export A3 first-angle drawings (TCVN) for the 8 machined parts, build the BOM | `DeltaRobot_Final/`, `BanVe_GiaCong/` |
+| Chapter | Title | What it covers |
+|---|---|---|
+| **1** | Overview | Motivation; state of the art of Delta robots; general and specific objectives; research object and scope; research method; report outline. |
+| **2** | Theoretical basis | Delta structure and working principle; geometric model and coordinate frames; kinematic foundations — degrees of freedom, geometric parameters, per-limb closed-loop equations, forward kinematics, inverse kinematics, model-consistency check; basis for the vacuum-gripper design — joint layout and suction-cup arrangement, suction force and vacuum pressure. |
+| **3** | Workspace computation & simulation | Objectives, scope and input data; the L9 survey parameter set and the test trajectory; point-density workspace simulation — joint-space sweep, volume and largest-cross-section estimate; verification of the target Ø800 × 250 mm cylinder, of the pick-and-place trajectory, and of the joint velocity / acceleration bounds. |
+| **4** | Load analysis, material & drivetrain selection | Material selection; part masses from CAD; load data and force-distribution model; internal-force analysis of the links — free-body model, axial forces, motor–gearbox selection; FEA strength check of the main load-bearing parts; overall strength summary versus requirements. |
+| **5** | Electrical & control system design | Machine-vision system — colour/shape recognition algorithm and test results on sample images; camera–robot–conveyor coordinate transforms; control-board architecture. |
+| **6** | Conclusion & future work | Results, limitations of the work, and development directions. |
 
 ---
 
-## 9. Repository layout
-
-```
-DeltaRobot_Final/      Active CAD model (SolidWorks 2023)
-                       DR-000_Delta-Robot_V0.SLDASM — main assembly
-                       DR-001…DR-007 — machined parts (DR-001 split into 3 files)
-                       Frame.SLDPRT — steel support frame
-                       + TPMA gearbox, connecting rods, ball joints
-
-MoPhong_DongHoc/       Kinematics simulation (MATLAB R2025a + Robotics System Toolbox)
-                       params.m • delta_ik/fk/jacobian.m • p3…p6 • delta_gui.m
-                       delta_kinematics.slx (Simulink) • figs/ • KETQUA_DONGHOC.md
-
-MoPhong_Luc/           Force analysis & actuator selection (MATLAB)
-                       force_analysis.m • force_poses.m • force_diagrams.m
-                       ThuyetMinh_ChonDongCo.md
-
-MoPhong_Ben/           Structural FEA (SolidWorks Simulation via COM)
-                       fea_run*.ps1 • figs/ • KETQUA_BEN.md • KETQUA_BEN_DAPOSE.md
-                       THUYETMINH_MOPHONG_BEN_CHITIET.md
-                       (solver .CWR/.LOG files are not tracked — regenerable)
-
-BanVe_GiaCong/         Machining drawings for the 8 machined parts
-                       BanVe_ChinhSua_V7/ — .SLDDRW + .pdf (A3, first-angle, TCVN)
-                       make_drawing*.ps1 — drawing regeneration scripts
-
-TIENDO.md             Daily progress log (Vietnamese)
-CLAUDE.md             Workflow & automation notes
-```
-
-> The thesis document itself (`BaoCao/` — DOCX / PDF / PPTX) is **not** published here; its key content is summarised in this README.
-
-## 10. Toolchain
-
-| Task | Tool |
-|---|---|
-| CAD & assembly | SolidWorks 2023 SP3 (automated via COM / PowerShell) |
-| FEA | SolidWorks Simulation (COM) — mesh convergence, multi-pose sweep |
-| Kinematics / forces / trajectory | MATLAB R2025a (+ Robotics System Toolbox), Simulink |
-| Document generation | pandoc (Markdown → OMML/DOCX), PyMuPDF (PDF assembly & editing) |
-
-## 11. Not included
-
-For copyright and size reasons, the following are excluded (see `.gitignore`):
-
-- The thesis document (`BaoCao/` — report DOCX/PDF, presentation PPTX).
-- Reference research papers and the ABB IRB 360 catalogue (`DeltaRobot_Document/`).
-- Wittenstein vendor CAD & catalogues (`Catalog_Wittenstein/`), McMaster-Carr purchased-part CAD (`LinhKien/`).
-- FEA solver result files `.CWR` / `.LOG` (≈ 13 GB, regenerable from the scripts in `MoPhong_Ben/`).
-- Simulink build cache (`slprj/`), `.bmp` previews, and `*_backup_*` copies.
-
-## 12. License & usage
-
-This is academic work (a graduation thesis). The analysis code and models are the author's own; all rights reserved. Reuse is permitted for study and non-commercial research — please cite when reusing. Third-party trade names and CAD belong to their respective owners.
-
-**Author:** JohnNguyen205 — HCMUTE.
+<sub>The thesis document, third-party vendor CAD and reference papers are not included in this repository (see `.gitignore`). Academic work — all rights reserved; please cite if reused. © JohnNguyen205, HCMUTE.</sub>

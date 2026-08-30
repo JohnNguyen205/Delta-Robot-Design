@@ -34,6 +34,9 @@ File nhật ký tiến độ. Mỗi ngày làm việc là một mục, công vi�
 - [x] `git init` (nhánh `main`), stage có chọn lọc: `DeltaRobot_Final/ MoPhong_DongHoc/ MoPhong_Luc/ MoPhong_Ben/ BanVe_GiaCong/` + `README.md TIENDO.md CLAUDE.md .gitignore`. Verify: 325 file, ~100 MB, quét không dính `.CWR`/`BaoCao/`/papers/linh kiện; file lớn nhất 19,4 MB (< giới hạn 100 MB/file GitHub).
 - [x] Commit `2d7e0d7` "Initial commit: Delta robot mechanical design thesis (CAD, kinematics, force analysis, FEA, machining drawings)".
 - [x] **Push thành công** (người dùng tự chạy do bộ phân loại an toàn chặn lệnh publish + cần đăng nhập GitHub trên trình duyệt): `* [new branch] main -> main`, `branch 'main' set up to track 'origin/main'`.
+- [x] **Viết lại README toàn bộ bằng tiếng Anh** (yêu cầu bổ sung): chuẩn học thuật, nhúng **16 hình** lấy từ `figs/` của 3 folder mô phỏng (đã có sẵn trên repo, không thêm binary): sơ đồ động học + point cloud workspace, histogram sai số FK/IK, bản đồ κ(J), mô hình Simulink + profile khớp, sơ đồ phân bố lực + nội lực N/Q/M + bản đồ lực đa tư thế + mô-men khớp, biểu đồ chọn mô-men + so sánh hộp số, 4 ảnh von Mises FEA. Verify 16/16 đường dẫn ảnh tồn tại.
+- [x] Sửa lỗi `.gitignore`: comment cùng dòng (`BaoCao/   # ...`) làm pattern không khớp → `BaoCao/`, `DeltaRobot_Document/`, `LinhKien/`, `Catalog_Wittenstein/`, `Gripper/` không bị loại. Chuyển comment ra dòng riêng; `git check-ignore -v` xác nhận loại đúng.
+- Commit: `2d7e0d7` (initial) → `5527672` (README EN) → `9e7f9c5` (fix .gitignore), cả 3 đã push lên `origin/main`.
 - Ghi chú: máy chưa cài `git` từ đầu (chỉ có `gh` CLI) — người dùng cài Git for Windows 2.55 giữa phiên; session PowerShell cũ chưa nhận PATH nên phải gọi `git.exe` full path.
 
 ### 2026-07-26
