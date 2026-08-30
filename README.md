@@ -1,127 +1,218 @@
-# Delta Robot Design — Thiết kế cơ khí robot Delta 3 bậc tự do
+# Delta Robot Design — 3-DOF Parallel Robot Mechanical Design
 
-> Đồ án tốt nghiệp — Trường Đại học Sư phạm Kỹ thuật TP.HCM (HCMUTE)
-> Thiết kế cơ khí hoàn chỉnh cho một robot song song kiểu Delta treo trần, ứng dụng gắp – đặt tốc độ cao (tham chiếu ABB IRB 360 FlexPicker).
+> **Graduation thesis (đồ án tốt nghiệp)** — Ho Chi Minh City University of Technology and Education (HCMUTE).
+> Complete mechanical design of a ceiling-mounted 3-DOF Delta parallel robot for high-speed pick-and-place, benchmarked against the ABB IRB 360 FlexPicker.
 
-Repository gồm mô hình CAD SolidWorks, chương trình tính toán – mô phỏng MATLAB, kết quả mô phỏng bền (FEA), bản vẽ gia công và bộ thuyết minh đồ án. Mọi kết luận trong báo cáo đều được chứng minh bằng số liệu đọc lại từ mô hình / kết quả solver, không dùng giá trị giả định.
+This repository contains the SolidWorks CAD model, the MATLAB analysis and simulation code, the finite-element (FEA) results, and the machining drawings. Every conclusion is backed by data read back from the model or the solver — no assumed figures.
 
 ---
 
-## 1. Thông số mục tiêu
+## Overview
 
-| Đại lượng | Giá trị |
+| | |
 |---|---|
-| Tải trọng công tác (payload) | **2 kg** |
-| Vùng làm việc | trụ **Ø800 × 250 mm**, tâm cách mặt phẳng vai ~925 mm |
-| Chu kỳ gắp – đặt | 1,2 s (quỹ đạo bậc 5) |
-| Vận tốc TCP đỉnh | ~1875 mm/s (~1,18 g) |
-| Vận tốc khớp đỉnh | ~30 vòng/phút |
-| Kiểu lắp | treo trần (hang-from-frame) |
+| Architecture | 3-DOF Delta (parallel), rotational actuators, ceiling-mounted |
+| Payload | **2 kg** |
+| Workspace | cylinder **Ø800 × 250 mm**, centred ≈ 925 mm below the shoulder plane |
+| Pick-and-place cycle | 1.2 s (quintic trajectory) |
+| Peak TCP speed / acceleration | ≈ 1875 mm/s / ≈ 1.18 g |
+| Actuator | Wittenstein TPMA010S-055T gearmotor, ratio *i* = 55 |
+| Structural material | Aluminium 6061-T6 (all machined parts) |
+| Total mass | 122.4 kg (CAD model), ≈ 140 kg estimated real |
+| Minimum factor of safety (whole robot, full workspace) | **7.1** |
 
-## 2. Thông số động học (đã chốt)
+---
 
-| Ký hiệu | Ý nghĩa | Giá trị |
+## 1. Kinematic architecture
+
+| Symbol | Meaning | Value |
 |---|---|---|
-| L1 | cánh tay trên (trục vai → đường tâm cầu khuỷu) | 407,5 mm |
-| L2 | cẳng tay (tâm cầu ↔ tâm cầu) | 1000,0 mm |
-| R − r | bán kính đế − bán kính bàn máy động | 226,4 mm |
-| r | bán kính bàn máy động | 120,6 mm |
+| L₁ | upper-arm (bicep) length: shoulder axis → elbow ball line | 407.5 mm |
+| L₂ | forearm length, ball-centre to ball-centre | 1000.0 mm |
+| R − r | base radius − moving-platform radius | 226.4 mm |
+| r | moving-platform radius | 120.6 mm |
 
-**Kiểm chứng (MATLAB R2025a):** round-trip FK(IK(P)) sai số lớn nhất 6,2·10⁻¹³ mm trên 3000 điểm; Jacobian **không có điểm kỳ dị** trong vùng làm việc, số điều kiện lớn nhất 2,75 / trung bình 2,13; góc truyền cẳng tay – cánh tay nhỏ nhất 49,8°.
+<p align="center">
+  <img src="MoPhong_DongHoc/figs/kin_arm_schematic.png" width="46%" alt="Delta robot kinematic schematic">
+  <img src="MoPhong_DongHoc/figs/pSTT07_workspace_cloud.png" width="46%" alt="Reachable workspace point cloud">
+</p>
 
-## 3. Kết cấu & vật liệu
+**Figure 1.** Kinematic schematic of one arm (left) and the reachable workspace point cloud enclosing the target Ø800 × 250 mm cylinder (right).
 
-- **Toàn bộ chi tiết gia công: nhôm 6061-T6.** Đế robot ban đầu thiết kế bằng thép ASTM A36 nhưng quá nặng nên đã chuyển sang nhôm (giảm 128,8 kg).
-- Thanh nối (cẳng tay): sợi carbon. Khớp cầu (rod end `60645K471`): thép hợp kim.
-- Hộp số – động cơ: **Wittenstein TPMA010S-055T** (dòng TPM⁺ high-torque, tỉ số truyền i = 55).
-- Khối lượng toàn robot: **122,4 kg** (mô hình CAD); ≈ 140 kg thực tế sau khi hiệu chỉnh khối lượng hộp số nhập khẩu.
+## 2. Kinematics verification (MATLAB R2025a)
 
-## 4. Kết quả phân tích lực & mô phỏng bền
+The inverse and forward kinematics were implemented independently and cross-checked:
 
-| Hạng mục | Kết quả |
-|---|---|
-| Lực đầu công tác F_ee | 175,8 N |
-| Lực cặp cẳng tay (một tư thế) | 122,7 N — đa tư thế xấu nhất **182,4 N** (biên dưới R400 / z−1050) |
-| Mô-men uốn cánh tay | ~50 N·m — đa tư thế xấu nhất **74,3 N·m** |
-| Mô-men yêu cầu tại trục khớp M_yc | 136,3 N·m ≤ T2B 230 N·m → **dư 1,69×** |
-| Mô-men hiệu dụng M_rms | 53,4 N·m ≤ 110 N·m → **dư 2,06×** |
-| Tốc độ khớp | 30,1 ≤ 88 vòng/phút |
-| **FEA — hệ số an toàn nhỏ nhất toàn robot** | **7,1** (chi tiết DR-006), quét toàn bộ vùng làm việc |
+- Round-trip error ‖P − FK(IK(P))‖ ≤ **6.2 × 10⁻¹³ mm** over 3000 sample points.
+- Reachable radius 650 mm at z = −925 mm (requirement: 400 mm).
+- Jacobian: **no singular points** inside the workspace; condition number κ(J) max 2.75, average 2.13; minimum forearm–bicep transmission angle 49.8°.
 
-Phương pháp M_yc = (M_tĩnh + M_động) × hệ số an toàn 1,5, có kể trọng lượng và quán tính cánh tay trên (6,9 kg từ CAD) cùng quán tính rotor quy đổi J_mot·i² — theo yêu cầu giảng viên hướng dẫn.
+<p align="center">
+  <img src="MoPhong_DongHoc/figs/p2_roundtrip_hist.png" width="46%" alt="FK/IK round-trip error histogram">
+  <img src="MoPhong_DongHoc/figs/p4_cond_map.png" width="46%" alt="Jacobian condition-number map">
+</p>
+
+**Figure 2.** FK/IK closed-loop error distribution (left) and Jacobian condition-number map on the y = 0 section (right).
+
+## 3. Motion & trajectory
+
+A 6-block Simulink model (trajectory generator → IK → FK → Jacobian → joint velocity → logging) reproduces the pick-and-place cycle (solver ode3, Δt = 2 ms, 601 samples).
+
+<p align="center">
+  <img src="MoPhong_DongHoc/figs/simulink_model.png" width="46%" alt="Simulink kinematics model">
+  <img src="MoPhong_DongHoc/figs/p5_joint_profiles.png" width="46%" alt="Joint position/velocity/acceleration profiles">
+</p>
+
+**Figure 3.** Simulink model (left) and joint position / velocity / acceleration profiles over one 1.2 s cycle (right); peak joint speed 30.1 rpm.
+
+## 4. Force & dynamic analysis
+
+Forearm links are solved as two-force members; joint torques are obtained through the Jacobian. Loads are swept over the whole workspace (centre + 24 edge points + 4 waypoints × 26 peak-acceleration directions) and the worst case is retained.
+
+| Quantity | Nominal (centre pose) | Worst case (workspace edge, R400 / z−1050) |
+|---|---|---|
+| End-effector force F_ee | 175.8 N | 176.1 N |
+| Forearm-pair force | 122.7 N (61.3 N per rod) | **182.4 N** (× 1.49) |
+| Bicep bending moment | ≈ 50 N·m | **74.3 N·m** (× 1.49) |
+| Platform joint torque τ | 48.4 N·m | — |
+| Jacobian condition number | — | 2.75 (no singularity) |
+
+<p align="center">
+  <img src="MoPhong_Luc/figs/so_do_phan_bo_luc.png" width="46%" alt="Free-body / force distribution diagram">
+  <img src="MoPhong_Luc/figs/bieu_do_noi_luc.png" width="46%" alt="Internal force diagrams N, Q, M">
+</p>
+
+**Figure 4.** Free-body and force-distribution diagram (left) and internal-force diagrams N / Q / M for the bicep and forearm (right).
+
+<p align="center">
+  <img src="MoPhong_Luc/figs/pose_fmax_workspace.png" width="46%" alt="Peak forearm force over the workspace">
+  <img src="MoPhong_Luc/figs/joint_torques.png" width="46%" alt="Joint torque over the trajectory">
+</p>
+
+**Figure 5.** Peak forearm force mapped over the workspace (left) and joint torque along the trajectory (right).
+
+## 5. Actuator selection
+
+The required joint torque is split into static and dynamic terms and multiplied by a 1.5 safety factor (per the advisor's method), including the bicep weight and inertia (6.9 kg, from CAD) and the reflected rotor inertia *J*₍mot₎·*i*²:
+
+| Criterion | Result | Margin |
+|---|---|---|
+| Required torque M_yc = (M_static 35.8 + M_dynamic 55.0) × 1.5 | 136.3 N·m ≤ T2B 230 N·m | **1.69 ×** |
+| RMS torque M_rms | 53.4 N·m ≤ 110 N·m | **2.06 ×** |
+| Joint speed | 30.1 rpm ≤ 88 rpm | pass |
+
+The initially considered TPM-010S-061T (T2B 80 N·m) is rejected — M_yc 112.5 N·m > 80 N·m. The high-torque **TPMA010S-055T** passes all three criteria.
+
+<p align="center">
+  <img src="MoPhong_Luc/figs/torque_sizing.png" width="46%" alt="Torque sizing chart">
+  <img src="MoPhong_Luc/figs/gearbox_compare.png" width="46%" alt="Gearbox option comparison">
+</p>
+
+**Figure 6.** Torque-sizing chart (left) and comparison of the four size-010 gearbox options (right).
+
+## 6. Structure & materials
+
+- **All machined parts: aluminium 6061-T6.** The base was first designed in ASTM A36 steel but was too heavy, so all three base blocks were reassigned to 6061-T6 (−128.8 kg).
+- Forearm connecting rods: carbon fibre. Ball-joint rod ends (`60645K471`): alloy steel.
+- The base plate (`DR-001`) is split into three separate fabrication blocks — mounting plate, welded frame, and hanging lid — bolted/welded together.
+- Part numbering: `DR-000` main assembly, `DR-001…DR-007` machined parts; purchased parts keep their vendor names.
+
+## 7. Structural validation (FEA)
+
+SolidWorks Simulation, static studies on the load-bearing parts with the peak dynamic loads from §4, including a mesh-convergence sweep and a full-workspace multi-pose sweep.
+
+| Part | von Mises (worst pose) | Factor of safety |
+|---|---|---|
+| DR-006 Elbow clevis | 38.8 MPa | **7.1** (governing) |
+| DR-005-2 Upper-arm link | — | 43.5 |
+| DR-007 Moving platform | — | 14.7 |
+| DR-001-1 Base plate (aluminium) | — | ≈ 1268 |
+| DR-001-3 Ceiling lid (aluminium) | — | ≈ 72 |
+
+<p align="center">
+  <img src="MoPhong_Ben/figs/fea_dr006_resym_vonMises.png" width="46%" alt="FEA von Mises — elbow clevis">
+  <img src="MoPhong_Ben/figs/fea_dr007_vonMises.png" width="46%" alt="FEA von Mises — moving platform">
+</p>
+
+<p align="center">
+  <img src="MoPhong_Ben/figs/fea_dr005b_vonMises.png" width="46%" alt="FEA von Mises — upper-arm link">
+  <img src="MoPhong_Ben/figs/fea_dr001_1_vonMises.png" width="46%" alt="FEA von Mises — base plate">
+</p>
+
+**Figure 7.** von Mises stress plots: elbow clevis, moving platform, upper-arm link and base plate. The whole-robot minimum factor of safety over the entire workspace is **7.1**.
 
 ---
 
-## 5. Quy trình thiết kế (pipeline 8 giai đoạn)
+## 8. Design pipeline (8 stages)
 
-Toàn bộ đồ án — bao gồm bố cục báo cáo (`BaoCao/`) và bộ bản vẽ gia công (`BanVe_GiaCong/`) — bám theo pipeline tuyến tính sau; mỗi giai đoạn nhận đầu ra của giai đoạn trước và kết luận theo mức **đạt / đạt có điều kiện / chưa đánh giá**.
+The whole thesis — including the report structure and the drawing set — follows this linear pipeline; each stage consumes the output of the previous one and concludes as **pass / conditional pass / not evaluated**.
 
-| # | Giai đoạn | Nội dung | Sản phẩm |
+| # | Stage | Content | Artefacts |
 |---|---|---|---|
-| **I** | Cơ sở lý thuyết – nhiệm vụ – mục tiêu | tổng quan robot Delta, phát biểu bài toán, chốt thông số mục tiêu | Chương 1 báo cáo |
-| **II** | Thiết kế hình học & thông số động học | chọn L1, L2, R−r, r theo vùng làm việc Ø800×250; kiểm góc truyền / số điều kiện | `MoPhong_DongHoc/params.m`, Chương 2 |
-| **III** | Động học thuận / nghịch & Jacobian | dựng và kiểm chứng IK/FK (round-trip ~10⁻¹³ mm), phân tích kỳ dị | `delta_ik.m`, `delta_fk.m`, `delta_jacobian.m`, `p4_singularity.m` |
-| **IV** | Mô phỏng động học & quỹ đạo | vùng làm việc, quỹ đạo bậc 5, mô hình Simulink 6 khối, hoạt ảnh | `p3_workspace.m`, `p5_trajectory.m`, `p6_animate.m`, `delta_kinematics.slx` |
-| **V** | Phân tích lực & động lực học | sơ đồ phân bố lực, biểu đồ nội lực N/Q/M, quét tải đa tư thế toàn vùng làm việc | `MoPhong_Luc/force_analysis.m`, `force_diagrams.m`, `force_poses.m` |
-| **VI** | Lựa chọn động cơ – hộp số | điều kiện M_yc / M_rms / tốc độ; loại phương án TPM-010S-061T (không đạt), chốt TPMA010S-055T | `MoPhong_Luc/ThuyetMinh_ChonDongCo.md` |
-| **VII** | Lựa chọn vật liệu & mô phỏng bền FEA | chọn nhôm 6061-T6; FEA 5 chi tiết chịu lực chính + hội tụ lưới + quét đa tư thế | `MoPhong_Ben/KETQUA_BEN.md`, `KETQUA_BEN_DAPOSE.md` |
-| **VIII** | CAD lắp ráp, bản vẽ gia công & BOM | hoàn thiện `DR-000`, xuất bản vẽ A3 chiếu góc thứ nhất (TCVN) cho 8 chi tiết tự chế, lập BOM | `DeltaRobot_Final/`, `BanVe_GiaCong/` |
+| **I** | Theory basis, task, targets | Delta-robot review, problem statement, target parameters | report Ch. 1 |
+| **II** | Geometry & kinematic parameters | choose L₁, L₂, R−r, r for the Ø800 × 250 workspace; check transmission angle / condition number | `MoPhong_DongHoc/params.m` |
+| **III** | Forward / inverse kinematics & Jacobian | implement and verify IK/FK (round-trip ≈ 10⁻¹³ mm), singularity analysis | `delta_ik.m`, `delta_fk.m`, `delta_jacobian.m`, `p4_singularity.m` |
+| **IV** | Motion simulation & trajectory | workspace, quintic trajectory, 6-block Simulink model, animation | `p3_workspace.m`, `p5_trajectory.m`, `p6_animate.m`, `delta_kinematics.slx` |
+| **V** | Force & dynamic analysis | free-body diagram, internal-force diagrams N/Q/M, multi-pose load sweep | `MoPhong_Luc/force_analysis.m`, `force_diagrams.m`, `force_poses.m` |
+| **VI** | Actuator selection | M_yc / M_rms / speed criteria; reject TPM-010S-061T, select TPMA010S-055T | `MoPhong_Luc/ThuyetMinh_ChonDongCo.md` |
+| **VII** | Material selection & FEA | choose 6061-T6; FEA of the load-bearing parts + mesh convergence + multi-pose sweep | `MoPhong_Ben/KETQUA_BEN.md`, `KETQUA_BEN_DAPOSE.md` |
+| **VIII** | CAD assembly, machining drawings & BOM | finalise `DR-000`, export A3 first-angle drawings (TCVN) for the 8 machined parts, build the BOM | `DeltaRobot_Final/`, `BanVe_GiaCong/` |
 
 ---
 
-## 6. Cấu trúc repository
+## 9. Repository layout
 
 ```
-DeltaRobot_Final/      Mô hình CAD đang hoạt động (SolidWorks 2023)
-                       DR-000_Delta-Robot_V0.SLDASM — lắp tổng
-                       DR-001…DR-007 — chi tiết tự chế (DR-001 tách 3 file)
-                       Frame.SLDPRT — khung thép treo robot
-                       + hộp số TPMA, thanh nối, khớp cầu
+DeltaRobot_Final/      Active CAD model (SolidWorks 2023)
+                       DR-000_Delta-Robot_V0.SLDASM — main assembly
+                       DR-001…DR-007 — machined parts (DR-001 split into 3 files)
+                       Frame.SLDPRT — steel support frame
+                       + TPMA gearbox, connecting rods, ball joints
 
-MoPhong_DongHoc/       Mô phỏng động học (MATLAB R2025a + Robotics System Toolbox)
+MoPhong_DongHoc/       Kinematics simulation (MATLAB R2025a + Robotics System Toolbox)
                        params.m • delta_ik/fk/jacobian.m • p3…p6 • delta_gui.m
                        delta_kinematics.slx (Simulink) • figs/ • KETQUA_DONGHOC.md
 
-MoPhong_Luc/           Phân tích lực & lựa chọn động cơ (MATLAB)
+MoPhong_Luc/           Force analysis & actuator selection (MATLAB)
                        force_analysis.m • force_poses.m • force_diagrams.m
                        ThuyetMinh_ChonDongCo.md
 
-MoPhong_Ben/           Mô phỏng bền FEA (SolidWorks Simulation qua COM)
+MoPhong_Ben/           Structural FEA (SolidWorks Simulation via COM)
                        fea_run*.ps1 • figs/ • KETQUA_BEN.md • KETQUA_BEN_DAPOSE.md
                        THUYETMINH_MOPHONG_BEN_CHITIET.md
-                       (file .CWR/.LOG solver không đưa lên — tái sinh được)
+                       (solver .CWR/.LOG files are not tracked — regenerable)
 
-BanVe_GiaCong/         Bản vẽ gia công 8 chi tiết tự chế
-                       BanVe_ChinhSua_V7/ — .SLDDRW + .pdf (A3, chiếu góc 1, TCVN)
-                       make_drawing*.ps1 — script tái sinh bản vẽ
+BanVe_GiaCong/         Machining drawings for the 8 machined parts
+                       BanVe_ChinhSua_V7/ — .SLDDRW + .pdf (A3, first-angle, TCVN)
+                       make_drawing*.ps1 — drawing regeneration scripts
 
-TIENDO.md            Nhật ký tiến độ theo ngày
-CLAUDE.md           Ghi chú quy trình & công cụ automation
+TIENDO.md             Daily progress log (Vietnamese)
+CLAUDE.md             Workflow & automation notes
 ```
 
-> Quyển thuyết minh đồ án (`BaoCao/` — DOCX/PDF/PPTX) **không** đưa lên repo; nội dung cốt lõi đã tóm tắt trong README này.
+> The thesis document itself (`BaoCao/` — DOCX / PDF / PPTX) is **not** published here; its key content is summarised in this README.
 
-## 7. Công cụ
+## 10. Toolchain
 
-| Việc | Công cụ |
+| Task | Tool |
 |---|---|
-| CAD & lắp ráp | SolidWorks 2023 SP3 (tự động hóa qua COM / PowerShell) |
-| FEA | SolidWorks Simulation (COM) — hội tụ lưới, quét đa tư thế |
-| Động học / lực / quỹ đạo | MATLAB R2025a (+ Robotics System Toolbox), Simulink |
-| Xuất tài liệu | pandoc (Markdown → OMML/DOCX), PyMuPDF (ghép & hiệu chỉnh PDF) |
+| CAD & assembly | SolidWorks 2023 SP3 (automated via COM / PowerShell) |
+| FEA | SolidWorks Simulation (COM) — mesh convergence, multi-pose sweep |
+| Kinematics / forces / trajectory | MATLAB R2025a (+ Robotics System Toolbox), Simulink |
+| Document generation | pandoc (Markdown → OMML/DOCX), PyMuPDF (PDF assembly & editing) |
 
-## 8. Không bao gồm trong repo
+## 11. Not included
 
-Vì lý do bản quyền và dung lượng, các nội dung sau **không** được đưa lên (xem `.gitignore`):
+For copyright and size reasons, the following are excluded (see `.gitignore`):
 
-- Quyển thuyết minh đồ án (`BaoCao/` — báo cáo DOCX/PDF, slide PPTX).
-- Papers nghiên cứu tham khảo, catalog ABB IRB 360 (`DeltaRobot_Document/`).
-- CAD & catalog hãng Wittenstein (`Catalog_Wittenstein/`), CAD linh kiện mua sẵn McMaster-Carr (`LinhKien/`).
-- File kết quả solver FEA `.CWR` / `.LOG` (~13 GB, tái sinh được từ script trong `MoPhong_Ben/`).
-- Cache dựng Simulink (`slprj/`), ảnh preview `.bmp`, các bản backup `*_backup_*`.
+- The thesis document (`BaoCao/` — report DOCX/PDF, presentation PPTX).
+- Reference research papers and the ABB IRB 360 catalogue (`DeltaRobot_Document/`).
+- Wittenstein vendor CAD & catalogues (`Catalog_Wittenstein/`), McMaster-Carr purchased-part CAD (`LinhKien/`).
+- FEA solver result files `.CWR` / `.LOG` (≈ 13 GB, regenerable from the scripts in `MoPhong_Ben/`).
+- Simulink build cache (`slprj/`), `.bmp` previews, and `*_backup_*` copies.
 
-## 9. Bản quyền & sử dụng
+## 12. License & usage
 
-Đây là công trình học thuật (đồ án tốt nghiệp). Mã nguồn tính toán và mô hình do tác giả thực hiện; giữ toàn bộ quyền. Được phép tham khảo cho mục đích học tập, nghiên cứu phi thương mại; vui lòng trích dẫn khi sử dụng lại. Tên thương mại và CAD của các hãng thứ ba thuộc về chủ sở hữu tương ứng.
+This is academic work (a graduation thesis). The analysis code and models are the author's own; all rights reserved. Reuse is permitted for study and non-commercial research — please cite when reusing. Third-party trade names and CAD belong to their respective owners.
 
-**Tác giả:** JohnNguyen205 — HCMUTE.
+**Author:** JohnNguyen205 — HCMUTE.

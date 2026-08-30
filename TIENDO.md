@@ -25,6 +25,17 @@ File nhật ký tiến độ. Mỗi ngày làm việc là một mục, công vi�
 
 ## Nhật ký theo ngày
 
+### 2026-08-30
+
+#### 2026-08-30 — ĐẨY DỰ ÁN LÊN GITHUB (✅ HOÀN TẤT)
+> Người dùng tạo repo `github.com/JohnNguyen205/Delta-Robot-Design`, yêu cầu push các mục quan trọng + viết README chuyên nghiệp; **không đẩy quyển báo cáo `BaoCao/`** (được lấy nội dung vào README, không đẩy file).
+- [x] Viết `README.md` gốc repo (tiếng Việt, chuẩn đồ án): thông số mục tiêu + động học, kết quả lực/FEA (min FOS 7,1), **pipeline 8 giai đoạn I–VIII** bám bố cục báo cáo + bản vẽ, cấu trúc repo, công cụ, mục "không bao gồm", bản quyền.
+- [x] Viết `.gitignore`: loại `BaoCao/`, `DeltaRobot_Document/` (papers — bản quyền), `Catalog_Wittenstein/`, `LinhKien/` (CAD mua sẵn), `*.CWR`/`*.LOG` + `MP_BEN_V2/` (~13 GB kết quả solver, tái sinh được), `slprj/`, `*.bmp`, `**/Backup/`, `_codex_tmp/`, `AGENTS.md`.
+- [x] `git init` (nhánh `main`), stage có chọn lọc: `DeltaRobot_Final/ MoPhong_DongHoc/ MoPhong_Luc/ MoPhong_Ben/ BanVe_GiaCong/` + `README.md TIENDO.md CLAUDE.md .gitignore`. Verify: 325 file, ~100 MB, quét không dính `.CWR`/`BaoCao/`/papers/linh kiện; file lớn nhất 19,4 MB (< giới hạn 100 MB/file GitHub).
+- [x] Commit `2d7e0d7` "Initial commit: Delta robot mechanical design thesis (CAD, kinematics, force analysis, FEA, machining drawings)".
+- [x] **Push thành công** (người dùng tự chạy do bộ phân loại an toàn chặn lệnh publish + cần đăng nhập GitHub trên trình duyệt): `* [new branch] main -> main`, `branch 'main' set up to track 'origin/main'`.
+- Ghi chú: máy chưa cài `git` từ đầu (chỉ có `gh` CLI) — người dùng cài Git for Windows 2.55 giữa phiên; session PowerShell cũ chưa nhận PATH nên phải gọi `git.exe` full path.
+
 ### 2026-07-26
 
 #### 2026-07-26 — RÀ SOÁT + SỬA FORMAT TOÀN BỘ `BaoCao/Báo Cáo Fix/Chương 2 .docx` (✅ HOÀN TẤT)
