@@ -1,0 +1,155 @@
+=== MO PHONG LUC DELTA ROBOT (payload 2 kg) ===
+
+m_ee = ban may(4.214) + payload(2.0) + 1/2 forearm(2.019) = 8.233 kg
+
+--- TAI TRONG DINH (peak) tren quy dao ---
+ Luc dau cong tac  |F_ee|max        =  175.8 N
+ Luc doc forearm   |f_i|max (1 cap)  =  122.7 N  -> moi thanh 61.3 N, moi ball-joint 61.3 N
+ Momen khop        |tau_i|max        =  48.37 N.m  (kiem chon dong co/hop so TPM-010S)
+ Momen uon bicep uoc (f*L1)          =   50.0 N.m
+
+ Bang tai FEA (dung cho tung chi tiet):
+   DR-006 Elbow-Clevis : 123 N (1 cap forearm o 2 lo rod)
+   6516K305 Rod        : 62 N doc truc (nen/keo, kiem oan Euler)
+   DR-007 Platform     : 62 N moi diem bat (6 diem)
+   DR-005-2 Arm-Link   : momen uon ~50 N.m tai vai
+
+Da luu: out/force_log.txt, out/force_results.mat, figs/{forearm_forces,joint_torques,force_ee}.png
+=== MO PHONG LUC DELTA ROBOT (payload 2 kg) ===
+
+m_ee = ban may(4.214) + payload(2.0) + 1/2 forearm(2.019) = 8.233 kg
+
+--- TAI TRONG DINH (peak) tren quy dao ---
+ Luc dau cong tac  |F_ee|max        =  175.8 N
+ Luc doc forearm   |f_i|max (1 cap)  =  122.7 N  -> moi thanh 61.3 N, moi ball-joint 61.3 N
+ Momen khop        |tau_i|max        =  48.37 N.m  (kiem chon dong co/hop so TPM-010S)
+ Momen uon bicep uoc (f*L1)          =   50.0 N.m
+
+ Bang tai FEA (dung cho tung chi tiet):
+   DR-006 Elbow-Clevis : 123 N (1 cap forearm o 2 lo rod)
+   6516K305 Rod        : 62 N doc truc (nen/keo, kiem oan Euler)
+   DR-007 Platform     : 62 N moi diem bat (6 diem)
+   DR-005-2 Arm-Link   : momen uon ~50 N.m tai vai
+
+Da luu: out/force_log.txt, out/force_results.mat, figs/{forearm_forces,joint_torques,force_ee}.png
+=== PHAN TICH LUC & CHON DONG CO -- DELTA ROBOT (payload 2 kg) ===
+
+m_ee  = ban may(4.214)+payload(2.0)+1/2 forearm(2.019) = 8.233 kg
+m_arm = 6.912 kg  -> J_arm = (1/3)m L1^2 = 0.3826 kg.m^2 (thanh deu, bao thu)
+J_rot = J_mot*i^2 = 1.90e-05*61^2 = 0.0707 kg.m^2 (rotor+hop so quy ve truc RA)
+
+--- TAI TRONG DINH (payload 2 kg) ---
+ |F_ee|max              =  175.8 N
+ |f_i|max (1 cap fore.) =  122.7 N  -> moi thanh 61.4 N, moi ball-joint 61.4 N
+ Momen uon bicep (f*L1) =   50.0 N.m (tai vai, xem bieu do noi luc)
+
+--- MO MEN KHOP: TACH TINH / DONG (dinh tren ca chu ky, 3 khop) ---
+ M_tinh (giu trong luong)         =  35.84 N.m
+        gom: TCP 22.30 + bicep 13.82
+ M_dong (quan tinh)               =  39.18 N.m
+        gom: TCP 30.81 + (bicep+rotor) 13.94
+ M_tong = M_tinh + M_dong         =  75.01 N.m
+ He so an toan k_s                = 1.50
+ M_yeucau = k_s*(M_tinh+M_dong)   = 112.52 N.m
+
+--- KIEM CHON TPM-010S-061T (i=61) ---
+ [dinh]      M_yeucau 112.5  <= T2B 80 N.m  ? -> **KHONG DAT** (du 0.71x)
+ [lien tuc]  M_rms    45.4  <= T_stall 29 N.m ? -> **KHONG DAT** (du 0.64x)
+ [toc do]    w_khop   30.1  <= n2max 98 rpm  ? -> DAT
+ gia toc goc khop dinh = 1762 deg/s^2
+ => KET LUAN: CAN XEM LAI (co dieu kien khong dat).
+
+--- BANG TAI FEA (cho tung chi tiet) ---
+   DR-006 Elbow-Clevis : 123 N (1 cap forearm o 2 lo rod)
+   6516K305 Rod        : 62 N doc truc (nen/keo, kiem oan Euler)
+   DR-007 Platform     : 62 N moi diem bat (6 diem)
+   DR-005-2 Arm-Link   : momen uon ~51 N.m tai vai
+
+Da luu: out/force_log.txt, out/force_results.mat,
+        figs/{forearm_forces, force_ee, joint_torques, torque_sizing}.png
+=== PHAN TICH LUC & CHON DONG CO -- DELTA ROBOT (payload 2 kg) ===
+
+m_ee  = ban may(4.214)+payload(2.0)+1/2 forearm(2.019) = 8.233 kg
+m_arm = 6.912 kg  -> J_arm = (1/3)m L1^2 = 0.3826 kg.m^2 (thanh deu, bao thu)
+J_rot = J_mot*i^2 = 1.90e-05*61^2 = 0.0707 kg.m^2 (rotor+hop so quy ve truc RA)
+
+--- TAI TRONG DINH (payload 2 kg) ---
+ |F_ee|max              =  175.8 N
+ |f_i|max (1 cap fore.) =  122.7 N  -> moi thanh 61.4 N, moi ball-joint 61.4 N
+ Momen uon bicep (f*L1) =   50.0 N.m (tai vai, xem bieu do noi luc)
+
+--- MO MEN KHOP: TACH TINH / DONG (dinh tren ca chu ky, 3 khop) ---
+ M_tinh (giu trong luong)         =  35.84 N.m
+        gom: TCP 22.30 + bicep 13.82
+ M_dong (quan tinh)               =  39.18 N.m
+        gom: TCP 30.81 + (bicep+rotor) 13.94
+ M_tong = M_tinh + M_dong         =  75.01 N.m
+ He so an toan k_s                = 1.50
+ M_yeucau = k_s*(M_tinh+M_dong)   = 112.52 N.m
+
+--- KIEM CHON TPM-010S-061T (i=61) ---
+ [dinh]      M_yeucau 112.5  <= T2B 80 N.m  ? -> **KHONG DAT** (du 0.71x)
+ [lien tuc]  M_rms    45.4  <= T_stall 29 N.m ? -> **KHONG DAT** (du 0.64x)
+ [toc do]    w_khop   30.1  <= n2max 98 rpm  ? -> DAT
+ gia toc goc khop dinh = 1762 deg/s^2
+ => KET LUAN: TPM-010S-061T **KHONG DU** -> so sanh phuong an tang ti so truyen/mo men cao.
+
+--- SO SANH PHUONG AN HOP SO (cung co 010) ---
+ Phuong an                             i  Mdong    Myc    T2B   Mrms  stall  KL
+ TPM 010S-061T DYNAMIC (hien tai)     61   39.2  112.5     80   45.4     29  KHONG DAT
+ TPM 010S i=91 DYNAMIC (uoc luong)    91   40.8  115.0    119   46.5     43  KHONG DAT (uoc luong)
+ TPM 010S i=100 DYNAMIC (uoc luong)  100   41.7  116.3    131   47.0     48  DAT (uoc luong)
+ TPMA 010S-055T HIGH TORQUE           55   55.0  136.3    230   53.4    110  DAT
+ => DE XUAT: TPMA 010S-055T HIGH TORQUE  (Myc 136.3 <= T2B 230, du 1.69x; Mrms 53.4 <= stall 110).
+
+--- BANG TAI FEA (cho tung chi tiet) ---
+   DR-006 Elbow-Clevis : 123 N (1 cap forearm o 2 lo rod)
+   6516K305 Rod        : 62 N doc truc (nen/keo, kiem oan Euler)
+   DR-007 Platform     : 62 N moi diem bat (6 diem)
+   DR-005-2 Arm-Link   : momen uon ~51 N.m tai vai
+
+Da luu: out/force_log.txt, out/force_results.mat,
+        figs/{forearm_forces, force_ee, joint_torques, torque_sizing}.png
+=== PHAN TICH LUC & CHON DONG CO -- DELTA ROBOT (payload 2 kg) ===
+
+m_ee  = ban may(4.214)+payload(2.0)+1/2 forearm(2.019) = 8.233 kg
+m_arm = 6.912 kg  -> J_arm = (1/3)m L1^2 = 0.3826 kg.m^2 (thanh deu, bao thu)
+J_rot = J_mot*i^2 = 2.18e-04*55^2 = 0.6595 kg.m^2 (rotor+hop so quy ve truc RA)
+
+--- TAI TRONG DINH (payload 2 kg) ---
+ |F_ee|max              =  175.8 N
+ |f_i|max (1 cap fore.) =  122.7 N  -> moi thanh 61.4 N, moi ball-joint 61.4 N
+ Momen uon bicep (f*L1) =   50.0 N.m (tai vai, xem bieu do noi luc)
+
+--- MO MEN KHOP: TACH TINH / DONG (dinh tren ca chu ky, 3 khop) ---
+ M_tinh (giu trong luong)         =  35.84 N.m
+        gom: TCP 22.30 + bicep 13.82
+ M_dong (quan tinh)               =  55.03 N.m
+        gom: TCP 30.81 + (bicep+rotor) 32.04
+ M_tong = M_tinh + M_dong         =  90.87 N.m
+ He so an toan k_s                = 1.50
+ M_yeucau = k_s*(M_tinh+M_dong)   = 136.30 N.m
+
+--- KIEM CHON TPMA010S-055T HIGH TORQUE (i=55, DA CHON) ---
+ [dinh]      M_yeucau 136.3  <= T2B 230 N.m  ? -> DAT (du 1.69x)
+ [lien tuc]  M_rms    53.4  <= T_stall 110 N.m ? -> DAT (du 2.06x)
+ [toc do]    w_khop   30.1  <= n2max 88 rpm  ? -> DAT
+ gia toc goc khop dinh = 1762 deg/s^2
+ => KET LUAN: TPMA010S-055T DU KHA NANG (dat ca 3 dieu kien).
+
+--- SO SANH PHUONG AN HOP SO (cung co 010) ---
+ Phuong an                             i  Mdong    Myc    T2B   Mrms  stall  KL
+ TPM 010S-061T DYNAMIC (cu)           61   39.2  112.5     80   45.4     29  KHONG DAT
+ TPM 010S i=91 DYNAMIC (uoc luong)    91   40.8  115.0    119   46.5     43  KHONG DAT (uoc luong)
+ TPM 010S i=100 DYNAMIC (uoc luong)  100   41.7  116.3    131   47.0     48  DAT (uoc luong)
+ TPMA 010S-055T HIGH TORQUE (DA CHON)   55   55.0  136.3    230   53.4    110  DAT
+ => DE XUAT: TPMA 010S-055T HIGH TORQUE (DA CHON)  (Myc 136.3 <= T2B 230, du 1.69x; Mrms 53.4 <= stall 110).
+
+--- BANG TAI FEA (cho tung chi tiet) ---
+   DR-006 Elbow-Clevis : 123 N (1 cap forearm o 2 lo rod)
+   6516K305 Rod        : 62 N doc truc (nen/keo, kiem oan Euler)
+   DR-007 Platform     : 62 N moi diem bat (6 diem)
+   DR-005-2 Arm-Link   : momen uon ~51 N.m tai vai
+
+Da luu: out/force_log.txt, out/force_results.mat,
+        figs/{forearm_forces, force_ee, joint_torques, torque_sizing}.png

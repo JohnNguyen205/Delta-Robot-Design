@@ -1,0 +1,120 @@
+=== TONG HOP THONG SO TAI TRONG FEA -- DELTA ROBOT (payload 2 kg) ===
+
+--- Du lieu doc lai (KHONG tinh lai) ---
+ out/force_results.mat: fMax = 122.7252 N , FeeMax = 175.8165 N , L1m = 0.4075 m
+ out/pose_results.mat : fw   = 182.4498 N , Fw     = 176.1039 N , tw = 74.2858 N.m , L1m = 0.4075 m
+ Ty le worst-case/baseline r_pose = fw/fMax = 1.4867 (1.49x)
+
+--- 1. DR-006 Elbow-Clevis (baseline) ---
+ Co che: 1 cap forearm (2 thanh) bat vao 2 lo rod tren chac khuyu.
+ Cong thuc: F = fMax/2 = 122.73/2 = 61.36 N
+ Doi chieu run_parts.ps1 dong 17 (Comp=61.35 N): KHOP
+
+--- 1b. DR-006 (pose worst-case, x1.49) ---
+ Cong thuc: F = fw/2 = 182.45/2 = 91.22 N
+ Doi chieu run_parts_pose.ps1 dong 10 (Comp=91.20 N): KHOP
+
+--- 2. DR-005-2 Upper-Arm-Link (baseline) ---
+ Co che: momen uon bicep Mbicep=fMax*L1m quy ve luc ngang dat dau
+         khuyu, ngam dau vai, canh tay don = khoang cach 2 bore = 270 mm.
+ Cong thuc: Mbicep = fMax*L1m = 122.73*0.4075 = 50.01 N.m
+            F = Mbicep/L_arm52 = 50.01/0.270 = 185.22 N
+ Doi chieu run_parts.ps1 dong 18 (Comp=185.00 N): KHOP
+ Ghi chu: L_arm52=270mm la SUY DIEN cua phien nay tu 2 nguon doc lap
+          (toa do mat trong run_parts.ps1 va cong thuc dam trong
+          THUYETMINH muc 8) -- KHONG co 1 dong cong thuc F=M/L tuong
+          minh nao trong tai lieu goc, nhung khop voi 185N hardcode
+          trong pham vi lam tron (185.22 vs 185).
+
+--- 2b. DR-005-2 (pose worst-case) ---
+ Cong thuc: Mbicep_pose = fw*L1m = 182.45*0.4075 = 74.35 N.m (~= tw doc tu pose_results.mat = 74.29 N.m)
+            F = Mbicep_pose/L_arm52 = 74.35/0.270 = 275.36 N
+ Doi chieu run_parts_pose.ps1 dong 12 (Comp=275.00 N): KHOP
+
+--- 3. DR-007 Moving-Platform (baseline) ---
+ Co che: FeeMax dat tai tam ban may, chia deu 6 lo bat tool.
+ Cong thuc: F = FeeMax/6 = 175.82/6 = 29.30 N
+ Doi chieu run_parts.ps1 dong 19 (Comp=29.30 N): KHOP
+
+Ghi chu: DR-007 KHONG co phien ban pose worst-case trong run_parts_pose.ps1
+  (xem run_parts_pose.ps1 dong 2-3: "Platform Fee 176.1N ~ unchanged (pose-
+  independent) so DR-007 skipped" -- Fw doc tu pose_results.mat = 176.10 N, gan
+  bang FeeMax baseline 175.82 N, khop voi ly do bo qua nay).
+
+--- 4. 6516K305 Rod (connecting rod, baseline) ---
+ Co che: luc doc truc 1 thanh trong 1 cap (nen/keo) = fMax/2.
+ Cong thuc: F = fMax/2 = 122.73/2 = 61.36 N
+ Doi chieu run_parts.ps1: KHONG CO -- rod la chi tiet MUA (6516K305),
+   khong nam trong danh sach 5 part cua run_parts.ps1/run_parts_pose.ps1.
+ KIEM TRA EULER BUCKLING: force_analysis.m dong ~219 CHI IN RA dong chu
+   "kiem oan Euler" nhu MOT GHI CHU/VIEC-CAN-LAM, KHONG co cong thuc/so
+   lieu Euler (P_cr, do manh...) nao duoc TINH trong file do. => CHUA XAC
+   MINH DUOC so lieu kiem Euler; KHONG bia cong thuc moi o day (tranh tinh
+   lai vat ly ngoai pham vi "doc lai .mat" cua nhiem vu nay).
+
+--- 5. DR-001-1 De-Gan-Tay (tam de, ket cau tinh) ---
+ Nguon: KETQUA_BEN.md dong 47 va THUYETMINH_MOPHONG_BEN_CHITIET.md dong 147:
+   "600 N theo +Y (phan luc 3 cum canh tay)" dat len 6 lo bat bracket
+   (2 lo/canh tay x 3 canh tay) -- run_parts.ps1 dong 20 dat Comp=(0,0,100)
+   TUNG lo, tuc 100 N/lo x 6 lo = 600 N tong, KHOP voi 600 N cua tai lieu.
+ *** CHUA XAC MINH DUOC NGUON CONG THUC CHINH XAC CUA 600 N ***
+   Ca KETQUA_BEN.md va THUYETMINH_MOPHONG_BEN_CHITIET.md chi MO TA dinh
+   tinh ("phan luc 3 cum canh tay") ma KHONG co dong cong thuc/phep tinh
+   nao dan ra chinh xac con so 600 N (vi du: khong thay lien he truc tiep
+   voi FeeMax=175.8N, fMax=122.7N, hay khoi luong canh tay/gearbox nao ra
+   dung 600N). Khong tim thay file/log nao khac trong repo giai thich con
+   so nay (da rg qua TIENDO.md, ThuyetMinh_LuaChonVatLieu.md, cac file
+   faces_DR-001-1*.txt). KHONG bia them cong thuc o day.
+
+--- 5b. DR-001-1 (pose worst-case) ---
+ Cong thuc: nhan ty le pose r_pose=fw/fMax len gia tri baseline (khong
+   phai tinh rieng, vi phan luc bracket ty le voi luc tay may fMax).
+ F = 100.00 N/lo (baseline) x r_pose 1.4867 = 148.67 N/lo
+ Doi chieu run_parts_pose.ps1 dong 14 (Comp=149.00 N): KHOP
+
+--- 6. DR-001-2 Khung-Han (khung han, ket cau tinh) ---
+ Nguon: KETQUA_BEN.md muc 8.2 (dong 190-202), tinh tay 2026-07-22, CHEP
+   LAI nguyen cong thuc, khong tinh lai qua COM trong phien nay:
+   m_duoi (CAD, moi thu treo DUOI mat han Y=0, tru DR-001-2/-3) = 89.04 kg
+   + hieu chinh mat do gearbox TPMA (CAD 2.354 vs that 8.1 kg/cai x3)  = +17.24 kg
+   = m_duoi,that = 89.04 + 17.24 = 106.28 kg
+   F = m_duoi,that * g * k_s = 106.28 * 9.81 * 1.5 = 1563.9 N
+ Doi chieu run_parts.ps1 / run_parts_pose.ps1: KHONG CO -- DR-001-2 KHONG
+   nam trong 2 script nay (chi 5 tag: dr006,dr005b,dr007,dr001_1,dr001_3).
+   FEA rieng DR-001-2 chay TRUC TIEP qua fea_run.ps1 (khong qua run_parts*.ps1),
+   xem KETQUA_BEN.md muc 8.2. Gia tri F=1563.9N KHOP CHINH XAC voi con so
+   "1563,9 N" da ghi trong KETQUA_BEN.md (sai lech 0.010 N do lam tron doc).
+
+--- 7. DR-001-3 Mat-Treo (mat treo, ket cau tinh) ---
+ Nguon: KETQUA_BEN.md dong 34/48, THUYETMINH_MOPHONG_BEN_CHITIET.md dong 255:
+   "~2097 N = trong luong robot ~140 kg x 9.81 x he so 1.5" dat len 9 lo M12
+   (run_parts.ps1 dong 21: Comp=(0,0,233) TUNG lo x 9 lo = 2097 N tong).
+ Cong thuc XAP XI CONG BO: F_tong = m_robot*g*k_s = 140*9.81*1.5 = 2060.1 N
+ *** SAI LECH: cong thuc xap xi (2060.1 N) KHONG khop chinh xac voi 2097 N
+   da cong bo (lech 36.9 N = 1.8%). Khoi luong THAT can de ra dung 2097N
+   la m = 2097/(9.81*1.5) = 142.51 kg, KHONG khop voi "~140 kg" ghi trong tai
+   lieu (lech 2.51 kg). => CHUA XAC MINH DUOC nguon chinh xac cua so 2097N/
+   233N/lo -- tai lieu chi ghi cong thuc XAP XI (dau ~), khong co so lieu
+   khoi luong chinh xac dung de ra dung con so nay. KHONG bia them.
+
+=== BANG TONG HOP TAI TRONG FEA (doi chieu run_parts*.ps1) ===
+
+Chi tiet                   Co che truyen luc                          Cong thuc                          GiaTri     DVi   Hardcode     KhopKhong                    GhiChuNguon                                                  
+DR-006 (baseline)          1 cap forearm -> 2 lo rod chac khuyu       F = fMax/2                         61.36      N     61.35        KHOP                         force_results.mat fMax; run_parts.ps1 dong17                 
+DR-006 (pose worst-case)   1 cap forearm -> 2 lo rod, tu the bien R40 F = fw/2                           91.22      N     91.20        KHOP                         pose_results.mat fw; run_parts_pose.ps1 dong10               
+DR-005-2 (baseline)        uon bicep quy doi luc ngang dau khuyu, nga F = fMax*L1m / L_arm52             185.22     N     185.00       KHOP                         SUY DIEN phien nay tu run_parts.ps1 dong7 + THUYETMINH muc8  
+DR-005-2 (pose worst-case) uon bicep worst-case (bien R400 z-1050) qu F = fw*L1m / L_arm52               275.36     N     275.00       KHOP                         pose_results.mat fw; run_parts_pose.ps1 dong12               
+DR-007 (baseline)          FeeMax tai tam -> chia deu 6 lo bat tool   F = FeeMax/6                       29.30      N     29.30        KHOP                         force_results.mat FeeMax; run_parts.ps1 dong19               
+6516K305 Rod (baseline)    1 thanh doc truc trong 1 cap forearm       F = fMax/2                         61.36      N     N/A          N/A (khong co trong run_part force_results.mat fMax; Euler buckling CHUA XAC MINH DUOC NG 
+DR-001-1 (tam de)          phan luc 3 cum canh tay (bracket) -> 6 lo  F = 600 N (tai lieu) / 6 lo        100.00     N     100.00       KHOP                         CHUA XAC MINH DUOC NGUON cong thuc 600N -- chi co mo ta dinh 
+DR-001-1 (pose worst-case) phan luc bracket, nhan ty le pose r_pose   F = (600/6) * r_pose               148.67     N     149.00       KHOP                         pose_results.mat fw/fMax; run_parts_pose.ps1 dong14; ke thua 
+DR-001-2 (khung han)       tai treo phan duoi mat han Y=0 (m_duoi*g*k F = m_duoi_that*g*k_s              1563.9     N     N/A          N/A (khong co trong run_part KETQUA_BEN.md muc8.2 dong190-202; khop voi 1563.9N da cong b 
+DR-001-3 (mat treo)        treo toan bo robot -> 9 lo M12 xuyen       F = 2097 N (tai lieu, ~140kg*9.81* 233.00     N     233.00       KHOP                         CHUA XAC MINH DUOC nguon chinh xac -- cong thuc xap xi ~140k 
+
+Da luu bang: out/fea_load_params.csv (10 dong)
+Da luu log:  out/fea_load_params_log.txt
+
+--- TOM TAT KIEM TRA ---
+ So dong SO SANH DUOC voi run_parts*.ps1 va KHONG khop (>0.5 dung sai): 0
+ So dong co ghi chu "CHUA XAC MINH DUOC NGUON": 3 (xem chi tiet Section 5 va 7 o tren)
+DONE

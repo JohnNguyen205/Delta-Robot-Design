@@ -1,0 +1,101 @@
+=== BUILD SIMULINK: delta_kinematics ===
+MATLAB 25.1.0.2943329 (R2025a)
+Simulink: 25.1
+  TrajGen  in=1 out=1 (mong doi in=1 out=1)
+  IK       in=1 out=1 (mong doi in=1 out=1)
+  FK       in=1 out=1 (mong doi in=1 out=1)
+  Jac      in=2 out=2 (mong doi in=2 out=2)
+  ErrNorm  in=1 out=1 (mong doi in=1 out=1)
+Da luu figs/simulink_model.png
+Da luu F:\DeltaRobot\MoPhong_DongHoc\delta_kinematics.slx
+
+--- CHAY SIM (StopTime=1.2s, ode3, dt=0.002) ---
+Sim xong: 12 buoc thoi gian, 1 kenh
+
+--- KET QUA (doc tu SIM) ---
+Khop 1: |theta|max=1000.0 deg, |omega|max=999.9 deg/s (166.65 rpm)
+Khop 2: |theta|max=1000.0 deg, |omega|max=999.8 deg/s (166.64 rpm)
+Khop 3: |theta|max=999.9 deg, |omega|max=999.7 deg/s (166.62 rpm)
+Jacobian cond: max=300.000, tb=-44.621 ; goc truyen mu min=-999.5 deg
+Sai so round-trip FK(IK(P)) max = 3.000e+02 mm
+{Error using plot
+Specify the coordinates as vectors or matrices of the same size, or as a vector and a matrix that share the same length in at least one dimension.
+
+Error in build_simulink (line 124)
+subplot(2,1,1); plot(t,THd,'LineWidth',1.3); grid on; ylabel('\theta [deg]');
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+=== BUILD SIMULINK: delta_kinematics ===
+MATLAB 25.1.0.2943329 (R2025a)
+Simulink: 25.1
+  TrajGen  in=1 out=1 (mong doi in=1 out=1)
+  IK       in=1 out=1 (mong doi in=1 out=1)
+  FK       in=1 out=1 (mong doi in=1 out=1)
+  Jac      in=2 out=2 (mong doi in=2 out=2)
+  ErrNorm  in=1 out=1 (mong doi in=1 out=1)
+Da luu figs/simulink_model.png
+Da luu F:\DeltaRobot\MoPhong_DongHoc\delta_kinematics.slx
+
+--- CHAY SIM (StopTime=1.2s, ode3, dt=0.002) ---
+{Error using build_simulink (line 101)
+Log width = 1 (mong doi 12) -- Mux/To Workspace sai.
+} 
+=== BUILD SIMULINK: delta_kinematics ===
+MATLAB 25.1.0.2943329 (R2025a)
+Simulink: 25.1
+  TrajGen  in=1 out=1 (mong doi in=1 out=1)
+  IK       in=1 out=1 (mong doi in=1 out=1)
+  FK       in=1 out=1 (mong doi in=1 out=1)
+  Jac      in=2 out=2 (mong doi in=2 out=2)
+  ErrNorm  in=1 out=1 (mong doi in=1 out=1)
+Da luu figs/simulink_model.png
+Da luu F:\DeltaRobot\MoPhong_DongHoc\delta_kinematics.slx
+
+--- CHAY SIM (StopTime=1.2s, ode3, dt=0.002) ---
+Sim xong: 601 buoc thoi gian, 12 kenh
+
+--- KET QUA (doc tu SIM) ---
+Khop 1: |theta|max=34.3 deg, |omega|max=127.4 deg/s (21.23 rpm)
+Khop 2: |theta|max=53.9 deg, |omega|max=21178.7 deg/s (3529.78 rpm)
+Khop 3: |theta|max=53.9 deg, |omega|max=21178.8 deg/s (3529.79 rpm)
+Jacobian cond: max=2.285, tb=2.011 ; goc truyen mu min=53.8 deg
+Sai so round-trip FK(IK(P)) max = 5.324e-13 mm
+Da luu 5 figs + out/simulink_results.mat
+=== HOAN TAT ===
+=== BUILD SIMULINK: delta_kinematics ===
+MATLAB 25.1.0.2943329 (R2025a)
+Simulink: 25.1
+  TrajGen  in=1 out=1 (mong doi in=1 out=2)
+  IK       in=1 out=1 (mong doi in=1 out=1)
+  FK       in=1 out=1 (mong doi in=1 out=1)
+  Jac      in=2 out=2 (mong doi in=2 out=2)
+  JointVel in=3 out=1 (mong doi in=3 out=1)
+  ErrNorm  in=1 out=1 (mong doi in=1 out=1)
+{Error using build_simulink (line 66)
+Invalid Simulink object name: 'TrajGen/2'.
+} 
+[Warning: Unable to close the model 'delta_kinematics' because it has been changed. To save changes, use close_system('delta_kinematics',1). To discard changes, use
+close_system('delta_kinematics',0).] 
+=== BUILD SIMULINK: delta_kinematics ===
+MATLAB 25.1.0.2943329 (R2025a)
+Simulink: 25.1
+  TrajGen  in=1 out=2 (mong doi in=1 out=2)
+  IK       in=1 out=1 (mong doi in=1 out=1)
+  FK       in=1 out=1 (mong doi in=1 out=1)
+  Jac      in=2 out=2 (mong doi in=2 out=2)
+  JointVel in=3 out=1 (mong doi in=3 out=1)
+  ErrNorm  in=1 out=1 (mong doi in=1 out=1)
+Da luu figs/simulink_model.png
+Da luu F:\DeltaRobot\MoPhong_DongHoc\delta_kinematics.slx
+
+--- CHAY SIM (StopTime=1.2s, ode3, dt=0.002) ---
+Sim xong: 601 buoc thoi gian, 12 kenh
+
+--- KET QUA (doc tu SIM) ---
+Khop 1: |theta|max=34.3 deg, |omega|max=127.4 deg/s (21.23 rpm)
+Khop 2: |theta|max=53.9 deg, |omega|max=180.4 deg/s (30.07 rpm)
+Khop 3: |theta|max=53.9 deg, |omega|max=180.4 deg/s (30.07 rpm)
+Jacobian cond: max=2.285, tb=2.011 ; goc truyen mu min=53.8 deg
+Sai so round-trip FK(IK(P)) max = 5.324e-13 mm
+Da luu 5 figs + out/simulink_results.mat
+=== HOAN TAT ===

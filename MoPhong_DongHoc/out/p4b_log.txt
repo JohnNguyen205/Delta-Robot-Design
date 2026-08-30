@@ -1,0 +1,22 @@
+=== PHASE 4b: 3D SCATTER SO DIEU KIEN JACOBIAN ===
+So diem quet: 34372 ; diem gan ky di song song (detA~0): 0
+So dieu kien Jacobian: max=2.749 (tai [-341 209 -1050]) ; trung binh=2.133
+Goc truyen (forearm-bicep) nho nhat = 49.8 deg (tai [188 114 -800])
+Doi chieu thiet ke: cond ~3.69 , goc truyen xau nhat ~34.6 deg
+
+--- DOI CHIEU VOI SO LIEU DA TRICH DAN ---
+ntot: quet=34372 , trich dan=34372 , khop=1
+condmax: quet=2.7491 , trich dan=2.749 , lech=0.0001
+Pcondmax: quet=[-341 209 -1050] , trich dan=[-341 209 -1050]
+mumin: quet=49.805 , trich dan=49.8 , lech=0.005
+Pmumin: quet=[188 114 -800] , trich dan=[188 114 -800]
+
+Da luu figs/p4b_cond3d_scatter.png
+Da luu figs/p4b_cond3d_top.png
+Da luu figs/p4b_cond3d_front.png
+
+=== TOM TAT ===
+ntot=34372
+condmax=2.7491 tai [-341.3 208.6 -1050.0]
+condmean=2.1334
+mumin=49.805 deg tai [188.0 114.3 -800.0]

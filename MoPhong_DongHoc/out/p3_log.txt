@@ -1,0 +1,83 @@
+=== PHASE 3: VUNG LAM VIEC ===
+Ban kinh voi-toi tai z=-925: 650 mm (can >= 400)
+Khoang z voi-toi tren truc: [-1350, -570] mm
+Kiem tra bien tru muc tieu: 108 diem, 0 ngoai vung -> tru NAM GON trong workspace
+Da luu figs/p3_workspace_xz.png, figs/p3_slice_z.png
+=== PHASE 3: VUNG LAM VIEC ===
+Ban kinh voi-toi tai z=-925: 650 mm (can >= 400)
+Khoang z voi-toi tren truc: [-1350, -570] mm
+Kiem tra bien tru muc tieu: 108 diem, 0 ngoai vung -> tru NAM GON trong workspace
+[Warning: Exported image displays axes toolbar. To remove axes toolbar from image, export again.] 
+Da luu figs/p3_workspace_xz.png, figs/p3_slice_z.png
+=== PHASE 3: VUNG LAM VIEC ===
+Ban kinh voi-toi tai z=-925: 650 mm (can >= 400)
+Khoang z voi-toi tren truc: [-1350, -570] mm
+Kiem tra bien tru muc tieu: 108 diem, 0 ngoai vung -> tru NAM GON trong workspace
+Da luu figs/p3_workspace_xz.png, figs/p3_slice_z.png
+=== PHASE 3: VUNG LAM VIEC ===
+Ban kinh voi-toi tai z=-925: 650 mm (can >= 400)
+Khoang z voi-toi tren truc: [-1350, -570] mm
+Kiem tra bien tru muc tieu: 108 diem, 0 ngoai vung -> tru NAM GON trong workspace
+{Operation terminated by user during matlab.graphics.internal.mlprintjob.generateGfxOutput
+
+
+In printingGenerateOutput
+
+In printingGenerateOutput
+
+In printingGenerateOutput
+
+In alternatePrintPath
+
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', 'E:\Mathlab\toolbox\matlab\graphics\graphics\printing\print.m', 86)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('E:\Mathlab\toolbox\matlab\graphics\graphics\printing\print.m',86,0)">line 86</a>)
+pj = alternatePrintPath(pj);
+     ^^^^^^^^^^^^^^^^^^^^^^
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('saveas', 'E:\Mathlab\toolbox\matlab\general\saveas.m', 181)" style="font-weight:bold">saveas</a> (<a href="matlab: opentoline('E:\Mathlab\toolbox\matlab\general\saveas.m',181,0)">line 181</a>)
+        print( h, name, ['-d' dev{i}] )
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('p3_workspace', 'F:\DeltaRobot\MoPhong_DongHoc\p3_workspace.m', 58)" style="font-weight:bold">p3_workspace</a> (<a href="matlab: opentoline('F:\DeltaRobot\MoPhong_DongHoc\p3_workspace.m',58,0)">line 58</a>)
+saveas(f1,'figs/p3_workspace_xz.png');
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+p3_workspace
+=== PHASE 3: VUNG LAM VIEC ===
+Ban kinh voi-toi tai z=-925: 650 mm (can >= 400)
+Khoang z voi-toi tren truc: [-1350, -570] mm
+Kiem tra bien tru muc tieu: 108 diem, 0 ngoai vung -> tru NAM GON trong workspace
+<a href="matlab: opentoline('E:\Mathlab\toolbox\matlab\lang\onCleanup.m',29,1)">29  </a>            obj.task();
+{Unrecognized function or variable 'params'.
+
+Error in <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('chay_mophong', 'F:\DeltaRobot\MoPhong_DongHoc\chay_mophong.m', 6)" style="font-weight:bold">chay_mophong</a> (<a href="matlab: opentoline('F:\DeltaRobot\MoPhong_DongHoc\chay_mophong.m',6,0)">line 6</a>)
+p = params();
+^^^^^^^^^^^^^
+}
+{Unrecognized function or variable 'params'.
+
+Error in <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('p5_trajectory', 'F:\DeltaRobot\MoPhong_DongHoc\p5_trajectory.m', 3)" style="font-weight:bold">p5_trajectory</a> (<a href="matlab: opentoline('F:\DeltaRobot\MoPhong_DongHoc\p5_trajectory.m',3,0)">line 3</a>)
+p = params();
+^^^^^^^^^^^^^
+}
+{Operation terminated by user during matlab.graphics.internal.mlprintjob.generateGfxOutput
+
+
+In printingGenerateOutput
+
+In printingGenerateOutput
+
+In printingGenerateOutput
+
+In alternatePrintPath
+
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('print', 'E:\Mathlab\toolbox\matlab\graphics\graphics\printing\print.m', 86)" style="font-weight:bold">print</a> (<a href="matlab: opentoline('E:\Mathlab\toolbox\matlab\graphics\graphics\printing\print.m',86,0)">line 86</a>)
+pj = alternatePrintPath(pj);
+     ^^^^^^^^^^^^^^^^^^^^^^
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('saveas', 'E:\Mathlab\toolbox\matlab\general\saveas.m', 181)" style="font-weight:bold">saveas</a> (<a href="matlab: opentoline('E:\Mathlab\toolbox\matlab\general\saveas.m',181,0)">line 181</a>)
+        print( h, name, ['-d' dev{i}] )
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('p3_workspace', 'F:\DeltaRobot\MoPhong_DongHoc\p3_workspace.m', 58)" style="font-weight:bold">p3_workspace</a> (<a href="matlab: opentoline('F:\DeltaRobot\MoPhong_DongHoc\p3_workspace.m',58,0)">line 58</a>)
+saveas(f1,'figs/p3_workspace_xz.png');
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+} 
+delta_gui_simple
+delta_gui_simple
+delta_gui_simple

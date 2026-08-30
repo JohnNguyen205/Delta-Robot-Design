@@ -1,0 +1,64 @@
+=== MAXIMUM WORKSPACE + TRAJECTORY MAP L9 ===
+Gioi han goc: [-45, 70] deg; luoi FK: 45^3 = 91125 to hop
+Quy dao: 601 diem, thoi gian 1.20 s
+
+--- Hien tai (Run 0): L1=407.5, L2=1000.0, R=347.0, r=120.6 ---
+  FK hop le: 91125/91125; V=89291000 mm^3; Amax=1237795.0 mm^2 tai z=-698.6; Dtd=1255.4 mm
+  Quy dao: waypoint 4/4; toan bo 601/601 = 100.00%; ket luan: DAT; thoi gian 0.54 s
+
+  Tu kiem tra Run 0: sai so FK vector hoa lon nhat = 2.546e-13 mm
+
+--- L9-1 (Run 1): L1=350.0, L2=850.0, R=300.0, r=90.0 ---
+  FK hop le: 91125/91125; V=84863000 mm^3; Amax=844841.6 mm^2 tai z=-587.3; Dtd=1037.2 mm
+  Quy dao: waypoint 2/4; toan bo 461/601 = 76.71%; ket luan: KHONG DAT; thoi gian 0.16 s
+
+--- L9-2 (Run 2): L1=350.0, L2=1000.0, R=347.0, r=120.6 ---
+  FK hop le: 91125/91125; V=89378000 mm^3; Amax=1182283.8 mm^2 tai z=-727.1; Dtd=1226.9 mm
+  Quy dao: waypoint 4/4; toan bo 601/601 = 100.00%; ket luan: DAT; thoi gian 0.16 s
+
+--- L9-3 (Run 3): L1=350.0, L2=1150.0, R=394.0, r=150.0 ---
+  FK hop le: 91125/91125; V=90776000 mm^3; Amax=1537655.9 mm^2 tai z=-864.9; Dtd=1399.2 mm
+  Quy dao: waypoint 2/4; toan bo 231/601 = 38.44%; ket luan: KHONG DAT; thoi gian 0.15 s
+
+--- L9-4 (Run 4): L1=407.5, L2=850.0, R=347.0, r=150.0 ---
+  FK hop le: 91125/91125; V=85375000 mm^3; Amax=904983.0 mm^2 tai z=-548.5; Dtd=1073.4 mm
+  Quy dao: waypoint 2/4; toan bo 509/601 = 84.69%; ket luan: KHONG DAT; thoi gian 0.19 s
+
+--- L9-5 (Run 5): L1=407.5, L2=1000.0, R=394.0, r=90.0 ---
+  FK hop le: 91125/91125; V=84239000 mm^3; Amax=949991.8 mm^2 tai z=-709.3; Dtd=1099.8 mm
+  Quy dao: waypoint 4/4; toan bo 601/601 = 100.00%; ket luan: DAT; thoi gian 0.13 s
+
+--- L9-6 (Run 6): L1=407.5, L2=1150.0, R=300.0, r=120.6 ---
+  FK hop le: 91125/91125; V=91095000 mm^3; Amax=2012253.0 mm^2 tai z=-782.9; Dtd=1600.6 mm
+  Quy dao: waypoint 2/4; toan bo 359/601 = 59.73%; ket luan: KHONG DAT; thoi gian 0.12 s
+
+--- L9-7 (Run 7): L1=465.0, L2=850.0, R=394.0, r=120.6 ---
+  FK hop le: 91125/91125; V=72470000 mm^3; Amax=653965.6 mm^2 tai z=-523.7; Dtd=912.5 mm
+  Quy dao: waypoint 2/4; toan bo 447/601 = 74.38%; ket luan: KHONG DAT; thoi gian 0.13 s
+
+--- L9-8 (Run 8): L1=465.0, L2=1000.0, R=300.0, r=150.0 ---
+  FK hop le: 91125/91125; V=90904000 mm^3; Amax=1600023.5 mm^2 tai z=-623.0; Dtd=1427.3 mm
+  Quy dao: waypoint 4/4; toan bo 601/601 = 100.00%; ket luan: DAT; thoi gian 0.15 s
+
+--- L9-9 (Run 9): L1=465.0, L2=1150.0, R=347.0, r=90.0 ---
+  FK hop le: 91125/91125; V=90520000 mm^3; Amax=1663429.9 mm^2 tai z=-789.1; Dtd=1455.3 mm
+  Quy dao: waypoint 4/4; toan bo 601/601 = 100.00%; ket luan: DAT; thoi gian 0.16 s
+
+=== TOM TAT KIEM TRA QUY DAO ===
+Hien tai: V=89291000 mm^3; Amax=1237795.0 mm^2; z=-698.6 mm; Dtd=1255.4 mm; waypoint=4/4; path=601/601 (100.00%); DAT
+L9-1: V=84863000 mm^3; Amax=844841.6 mm^2; z=-587.3 mm; Dtd=1037.2 mm; waypoint=2/4; path=461/601 (76.71%); KHONG DAT
+L9-2: V=89378000 mm^3; Amax=1182283.8 mm^2; z=-727.1 mm; Dtd=1226.9 mm; waypoint=4/4; path=601/601 (100.00%); DAT
+L9-3: V=90776000 mm^3; Amax=1537655.9 mm^2; z=-864.9 mm; Dtd=1399.2 mm; waypoint=2/4; path=231/601 (38.44%); KHONG DAT
+L9-4: V=85375000 mm^3; Amax=904983.0 mm^2; z=-548.5 mm; Dtd=1073.4 mm; waypoint=2/4; path=509/601 (84.69%); KHONG DAT
+L9-5: V=84239000 mm^3; Amax=949991.8 mm^2; z=-709.3 mm; Dtd=1099.8 mm; waypoint=4/4; path=601/601 (100.00%); DAT
+L9-6: V=91095000 mm^3; Amax=2012253.0 mm^2; z=-782.9 mm; Dtd=1600.6 mm; waypoint=2/4; path=359/601 (59.73%); KHONG DAT
+L9-7: V=72470000 mm^3; Amax=653965.6 mm^2; z=-523.7 mm; Dtd=912.5 mm; waypoint=2/4; path=447/601 (74.38%); KHONG DAT
+L9-8: V=90904000 mm^3; Amax=1600023.5 mm^2; z=-623.0 mm; Dtd=1427.3 mm; waypoint=4/4; path=601/601 (100.00%); DAT
+L9-9: V=90520000 mm^3; Amax=1663429.9 mm^2; z=-789.1 mm; Dtd=1455.3 mm; waypoint=4/4; path=601/601 (100.00%); DAT
+
+Da luu:
+  out/workspace_max_l9_trajectory.csv
+  out/workspace_max_l9_trajectory.mat
+  figs/workspace_max_l9_trajectory_map.png
+  figs/workspace_max_l9_max_slice_map.png
+=== HET CHUONG TRINH ===

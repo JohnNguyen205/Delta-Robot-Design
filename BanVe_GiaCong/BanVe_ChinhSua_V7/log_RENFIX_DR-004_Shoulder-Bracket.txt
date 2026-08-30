@@ -1,0 +1,19 @@
+﻿opened F:\DeltaRobot\BanVe_GiaCong\BanVe_ChinhSua_V7\DR-004_Shoulder-Bracket.SLDDRW
+TITLE TABLE BEFORE: rows=4 cols=5 totalW=140.00mm totalH=32.00mm [Nguoi ve][NGUYEN VAN NAM - 23134038][23/07/2026][<FONT size=14PTS style=B>DR-004: Shoulder-Bracket][][Kiem tra][TS. VU QUANG HUY][][][][TRUONG DAI HOC CONG NGHE KY THUAT TP.HCM|Nganh Robot and AI - Lop 23134A][][][6061-T6 (SS)][1:1 (A3)][][][][][DR-004]
+view count (excluding sheet) = 4
+BEFORE view0 (Drawing View1): total=5 visible=4
+BEFORE view1 (Drawing View2): total=21 visible=3
+BEFORE view2 (Drawing View3): total=5 visible=1
+BEFORE view3 (Drawing View4): total=0 visible=0
+view0 filter: existingVis=4 newLimit=6 finalKeep=4
+view1 filter: existingVis=3 newLimit=6 finalKeep=6
+view2 filter: existingVis=1 newLimit=6 finalKeep=1
+total promoted (hidden->visible) = 3
+TITLE TABLE AFTER: rows=4 cols=5 totalW=140.00mm totalH=32.00mm [Nguoi ve][NGUYEN VAN NAM - 23134038][23/07/2026][<FONT size=14PTS style=B>DR-004: Shoulder-Bracket][][Kiem tra][TS. VU QUANG HUY][][][][TRUONG DAI HOC CONG NGHE KY THUAT TP.HCM|Nganh Robot and AI - Lop 23134A][][][6061-T6 (SS)][1:1 (A3)][][][][][DR-004]
+TITLE TABLE UNCHANGED: True
+AFTER view0 (Drawing View1): total=5 visible=4
+AFTER view1 (Drawing View2): total=21 visible=6
+AFTER view2 (Drawing View3): total=5 visible=1
+AFTER view3 (Drawing View4): total=0 visible=0
+save drw err=0 pdf err=0 pdfSize=54194
+DONE_RENFIX

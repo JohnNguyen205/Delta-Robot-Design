@@ -1,0 +1,6 @@
+=== PHASE 4: JACOBIAN / KY DI / GOC TRUYEN ===
+So diem quet: 34372 ; diem gan ky di song song (detA~0): 0
+So dieu kien Jacobian: max=2.749 (tai [-341 209 -1050]) ; trung binh=2.133
+Goc truyen (forearm-bicep) nho nhat = 49.8 deg (tai [188 114 -800])
+Doi chieu thiet ke: cond ~3.69 , goc truyen xau nhat ~34.6 deg
+Da luu figs/p4_cond_map.png

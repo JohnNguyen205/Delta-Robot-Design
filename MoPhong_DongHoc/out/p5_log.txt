@@ -1,0 +1,11 @@
+=== PHASE 5: QUY DAO PICK-AND-PLACE ===
+Waypoints (mm): pick(300,0,-1000)->nang->ngang->place(-300,0,-1000)
+Thoi gian: 0.30 + 0.60 + 0.30 = 1.20 s ; dt=0.002
+Diem voi-toi tren quy dao: 601/601 (100.0%)
+
+--- DINH (peak) ---
+Khop 1: |theta|<=34.3 deg, |omega|max=127.4 deg/s (21.23 rpm), |alpha|max=1341 deg/s^2
+Khop 2: |theta|<=53.9 deg, |omega|max=180.4 deg/s (30.06 rpm), |alpha|max=1761 deg/s^2
+Khop 3: |theta|<=53.9 deg, |omega|max=180.4 deg/s (30.06 rpm), |alpha|max=1761 deg/s^2
+TCP: van toc max=1875 mm/s, gia toc max=11540 mm/s^2 (1.18 g)
+Da luu figs/p5_path.png, figs/p5_joint_profiles.png

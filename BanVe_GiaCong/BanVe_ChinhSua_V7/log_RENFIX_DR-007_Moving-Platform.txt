@@ -1,0 +1,21 @@
+﻿opened F:\DeltaRobot\BanVe_GiaCong\BanVe_ChinhSua_V7\DR-007_Moving-Platform.SLDDRW
+TITLE TABLE BEFORE: rows=4 cols=5 totalW=140.00mm totalH=32.00mm [Nguoi ve][NGUYEN VAN NAM - 23134038][23/07/2026][<FONT size=14PTS style=B>DR-007: Moving-Platform][][Kiem tra][TS. VU QUANG HUY][][][][TRUONG DAI HOC CONG NGHE KY THUAT TP.HCM|Nganh Robot and AI - Lop 23134A][][][6061-T6 (SS)][1:4 (A3)][][][][][DR-007]
+view count (excluding sheet) = 4
+BEFORE view0 (Drawing View1): total=22 visible=2
+BEFORE view1 (Drawing View2): total=42 visible=3
+BEFORE view2 (Drawing View3): total=27 visible=1
+BEFORE view3 (Drawing View4): total=0 visible=0
+view0 filter: existingVis=2 newLimit=6 finalKeep=6
+view1 filter: existingVis=3 newLimit=6 finalKeep=6
+view2 filter: existingVis=1 newLimit=6 finalKeep=6
+total promoted (hidden->visible) = 12
+auto-best view for ren notes (most radius/diameter dims): view1 (count=9)
+added ren note in view1 ('Drawing View2') at (39,162)mm : 6X 5/8-18 UNF <HOLE-DEPTH>40
+TITLE TABLE AFTER: rows=4 cols=5 totalW=140.00mm totalH=32.00mm [Nguoi ve][NGUYEN VAN NAM - 23134038][23/07/2026][<FONT size=14PTS style=B>DR-007: Moving-Platform][][Kiem tra][TS. VU QUANG HUY][][][][TRUONG DAI HOC CONG NGHE KY THUAT TP.HCM|Nganh Robot and AI - Lop 23134A][][][6061-T6 (SS)][1:4 (A3)][][][][][DR-007]
+TITLE TABLE UNCHANGED: True
+AFTER view0 (Drawing View1): total=22 visible=6
+AFTER view1 (Drawing View2): total=42 visible=6
+AFTER view2 (Drawing View3): total=27 visible=6
+AFTER view3 (Drawing View4): total=0 visible=0
+save drw err=0 pdf err=0 pdfSize=60927
+DONE_RENFIX

@@ -1,0 +1,3 @@
+﻿DR-000_Delta-Robot_V0.SLDASM WhatsWrong check (before) - 2026-07-22 21:20:00
+WhatsWrongCount=0
+

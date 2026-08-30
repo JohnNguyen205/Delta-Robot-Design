@@ -1,0 +1,12 @@
+﻿part=DR-002_Motor-Bracket-A mat=6061-T6 (SS) mass=2.13 bbox=243x30x172
+professional scale v6 -> 1:4 (same for all 4 views)
+SetupSheet5 1:4 firstAngle fmt=BLANK -> False
+border drawn (empty sheet)
+Create1stAngleViews2=True
+layout v6 grid: F=(0.115,0.238) S=(0.315,0.238) T=(0.115,0.137) ISO=(0.315,0.137) commonScale=0.25
+view Drawing View1 dims=14 (autodim status=1)
+view Drawing View2 dims=21 (autodim status=1)
+dim filter v6: kept 18 deleted 13; all annotations clamped to cells
+title table v3: True at (0.241,0.07)
+save drw err=0 pdf err=0 pdfSize=32428
+DONE2

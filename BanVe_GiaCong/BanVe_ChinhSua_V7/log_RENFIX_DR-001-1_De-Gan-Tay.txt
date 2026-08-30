@@ -1,0 +1,19 @@
+﻿opened F:\DeltaRobot\BanVe_GiaCong\BanVe_ChinhSua_V7\DR-001-1_De-Gan-Tay.SLDDRW
+TITLE TABLE BEFORE: rows=4 cols=5 totalW=140.00mm totalH=32.00mm [Nguoi ve][NGUYEN VAN NAM - 23134038][23/06/2026][<FONT size=14PTS style=B>DR-001-1: De-Gan-Tay][][Kiem tra][TS. VU QUANG HUY][25/07/2026][][][TRUONG DAI HOC CONG NGHE KY THUAT TP.HCM|Nganh Robot and AI - Lop 23134A][][][ASTM A36 Steel][1:10 (A3)][][][][][DR-001-1]
+view count (excluding sheet) = 4
+BEFORE view0 (Drawing View1): total=18 visible=3
+BEFORE view1 (Drawing View2): total=71 visible=2
+BEFORE view2 (Drawing View3): total=19 visible=2
+BEFORE view3 (Drawing View4): total=0 visible=0
+view0 filter: existingVis=3 newLimit=6 finalKeep=6
+view1 filter: existingVis=2 newLimit=6 finalKeep=6
+view2 filter: existingVis=2 newLimit=6 finalKeep=6
+total promoted (hidden->visible) = 11
+TITLE TABLE AFTER: rows=4 cols=5 totalW=140.00mm totalH=32.00mm [Nguoi ve][NGUYEN VAN NAM - 23134038][23/06/2026][<FONT size=14PTS style=B>DR-001-1: De-Gan-Tay][][Kiem tra][TS. VU QUANG HUY][25/07/2026][][][TRUONG DAI HOC CONG NGHE KY THUAT TP.HCM|Nganh Robot and AI - Lop 23134A][][][ASTM A36 Steel][1:10 (A3)][][][][][DR-001-1]
+TITLE TABLE UNCHANGED: True
+AFTER view0 (Drawing View1): total=18 visible=6
+AFTER view1 (Drawing View2): total=71 visible=6
+AFTER view2 (Drawing View3): total=19 visible=6
+AFTER view3 (Drawing View4): total=0 visible=0
+save drw err=0 pdf err=0 pdfSize=77834
+DONE_RENFIX

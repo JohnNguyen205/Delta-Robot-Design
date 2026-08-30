@@ -1,0 +1,32 @@
+﻿DR-000_Delta-Robot_V0.SLDASM WhatsWrong check (after) - 2026-07-22 21:23:14
+
+KET LUAN: Assembly HIEN TAI khong co loi. Khong can sua gi (buoc 4 cua Nhiem vu 1).
+
+Bang chung (doc lai tu model qua COM, sau 3 lan EditRebuild3):
+- GetWhatsWrongCount() = 0  (lan 1 va lan 3 rebuild lien tiep, on dinh)
+- GetWhatsWrong(): Features=0 Warnings=0 (khong co gi de liet ke)
+- Quet rieng 48 mate sub-feature (duoi cac MateGroup) bang IFeature.GetErrorCode2(out isWarning):
+  MateErrors = 0 / 48
+- So component: 41, TAT CA o trang thai swComponentFullyResolved (GetSuppression2=2), khong co
+  component nao bi suppress/lightweight/InternalIdMismatch.
+- Tong khoi luong doc lai (CreateMassProperty tren asm) = 922.340 kg, khop voi tong khoi luong
+  cong don tung component (922.339 kg) -> khong co body/mat na o dau bi thieu hoac lech.
+
+GHI CHU QUAN TRONG (khong phai loi, nhung can luu y vi KHONG co trong CLAUDE.md):
+Assembly DR-000_Delta-Robot_V0.SLDASM hien co THEM 1 component moi ten "Frame-1"
+(tham chieu file DeltaRobot_Final\Frame.SLDPRT, ban sao/lien quan DR-100_Khung-Treo.SLDPRT)
+voi khoi luong rieng 799.9 kg (thep, theo ghi chu MoPhong_Ben/khung_treo/GHICHU_FEA_KHUNGTREO.md
+la khung gia do 4 cot ~2.55m). Component nay khong duoc mo ta trong CLAUDE.md phan "Assembly
+architecture" (chi liet ke DR-001..DR-007 + hang mua). Day la ly do khoi luong asm tong doc duoc
+(922.34 kg) cao hon nhieu so voi con so 122.4 kg ghi trong CLAUDE.md (122.4 kg la khoi luong
+CHI RIENG robot Delta, KHONG gom khung gia do treo). Mate cua Frame-1 voi phan con lai van
+resolved sach (0 loi), nen KHONG coi day la loi assembly - chi la thong tin de nguoi dung/session
+sau doi chieu, tranh nham lan khi so sanh voi con so 122.4 kg cu trong CLAUDE.md.
+
+Cac lan rebuild + doc lai duoc thuc hien qua script:
+  scratchpad/dr000_check.ps1 (WhatsWrong dump, typed interop GetWhatsWrong 3-out-param)
+  scratchpad/dr000_sanity.ps1 (rebuild lan 3 + quet 48 mate sub-feature)
+  scratchpad/dr000_masscheck2.ps1 (khoi luong tung file tham chieu, xac dinh Frame.SLDPRT la nguon
+    chenh lech khoi luong)
+
+=> KHONG CO LOI THUC SU CAN SUA. Truoc/sau giong nhau: WhatsWrongCount = 0 / 0.

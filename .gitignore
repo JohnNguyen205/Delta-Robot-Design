@@ -1,0 +1,69 @@
+# ─────────────────────────────────────────────────────────────
+#  Delta Robot Design — .gitignore
+#  Loại trừ: file tạm, cache giải, dữ liệu tái sinh được,
+#  CAD/tài liệu bên thứ ba (bản quyền), bản backup.
+# ─────────────────────────────────────────────────────────────
+
+# --- Thư mục KHÔNG đưa lên (bên thứ ba / bản quyền / tạm) ---
+BaoCao/                       # quyển báo cáo — KHÔNG public (nội dung đã tóm trong README)
+DeltaRobot_Document/          # papers nghiên cứu, catalog ABB — bản quyền tác giả
+Catalog_Wittenstein/          # catalog + CAD hãng Wittenstein
+LinhKien/                     # CAD linh kiện mua sẵn (McMaster-Carr…)
+_codex_tmp/
+.agents/
+.claude/
+Reference/
+Test/
+Manual/
+KichThuocThamKhao/
+DoAnThamKhao/
+DoAnThamKhao-Rename/
+Fomat/
+
+# --- Backup (quy ước copy-file, không cần version) ---
+**/Backup/
+*_backup_*
+*_premat*
+*_presteel*
+*_pretach*
+
+# --- SolidWorks: lock / scratch / bản dựng ---
+~$*
+*.bak
+*.SLDPRT.bak
+*.SLDASM.bak
+*.SLDDRW.bak
+swxJRNL*
+*.swp
+
+# --- SolidWorks Simulation (FEA): kết quả giải tái sinh được ---
+*.CWR
+*.CWR2
+*.cwr
+*.CWRTEMP
+*.LOG
+*-Benchmark-Solver.txt
+*-BenchMark-Solver.txt
+PerformanceLog.txt
+Result/
+MoPhong_Ben/MP_BEN_V2/
+MoPhong_Ben/khung_treo/*.CWR
+
+# --- MATLAB / Simulink: cache dựng ---
+slprj/
+**/slprj/
+*.slxc
+*.autosave
+codegen/
+
+# --- Ảnh preview lớn tái sinh được (giữ .png, bỏ .bmp) ---
+*.bmp
+
+# --- Hệ điều hành ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# --- File rác gốc repo ---
+out_tmp.txt
+AGENTS.md

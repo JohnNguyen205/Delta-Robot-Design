@@ -1,0 +1,4 @@
+"part","mat_before","mass_before_kg","mat_after","db_after","mass_after_kg","save_ok"
+"DR-001-1_De-Gan-Tay.SLDPRT","ASTM A36 Steel","99.262","6061-T6 (SS)","SOLIDWORKS Materials","34.141","True"
+"DR-001-2_Khung-Han.SLDPRT","ASTM A36 Steel","31.701","6061-T6 (SS)","SOLIDWORKS Materials","10.903","True"
+"DR-001-3_Mat-Treo.SLDPRT","ASTM A36 Steel","65.386","6061-T6 (SS)","SOLIDWORKS Materials","22.489","True"

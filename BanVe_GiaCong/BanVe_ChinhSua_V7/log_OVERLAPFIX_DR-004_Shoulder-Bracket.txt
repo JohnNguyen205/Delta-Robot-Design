@@ -1,0 +1,15 @@
+﻿opened F:\DeltaRobot\BanVe_GiaCong\BanVe_ChinhSua_V7\DR-004_Shoulder-Bracket.SLDDRW
+total dedup-hidden = 0
+view0 arranged: left=3 right=1 above=0 below=0 inside=0
+view1 arranged: left=1 right=4 above=0 below=0 inside=0
+view2 arranged: left=1 right=0 above=0 below=0 inside=0
+view0 resolve-overlaps: processed 4 items
+view1 resolve-overlaps: processed 5 items
+view2 resolve-overlaps: processed  items
+view0 OVERLAP CHECK: none (est. bbox)
+view1 OVERLAP CHECK: none (est. bbox)
+view2 OVERLAP CHECK: none (est. bbox)
+ANY OVERLAP REMAINING = False
+TITLE TABLE UNCHANGED: True
+save drw err=0 pdf err=0 pdfSize=53565
+DONE_OVERLAPFIX

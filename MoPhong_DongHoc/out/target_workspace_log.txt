@@ -1,0 +1,33 @@
+=== KIEM TRA TRU VUNG LAM VIEC MUC TIEU ===
+Luoi: z buoc 10 mm, rho buoc 10 mm, goc phuong vi buoc 5 deg
+Tong so diem: 74906
+Co nghiem IK + trong gioi han goc: 74906/74906 (100.0000%)
+Dat them Jacobian va mu>=30 deg: 74906/74906 (100.0000%)
+Diem khong dat tieu chi: 0
+mu_min = 49.8004 deg tai [199 115 -800] mm
+cond(J)_max = 2.7492 tai [346 200 -1050] mm
+Sai so FK(IK(P)) lon nhat = 7.898e-13 mm
+KET LUAN: TRU MUC TIEU DUOC BAO PHU 100% BOI MIEN LAM VIEC CHAP NHAN.
+=== KIEM TRA TRU VUNG LAM VIEC MUC TIEU ===
+Luoi: z buoc 10 mm, rho buoc 10 mm, goc phuong vi buoc 5 deg
+Tong so diem: 74906
+Co nghiem IK + trong gioi han goc: 74792/74906 (99.8478%)
+Dat them Jacobian va mu>=30 deg: 74792/74906 (99.8478%)
+Diem khong dat tieu chi: 114
+mu_min = 49.8004 deg tai [199 115 -800] mm
+cond(J)_max = 2.7492 tai [346 200 -1050] mm
+Sai so FK(IK(P)) lon nhat = 7.113e-13 mm
+KET LUAN: TRU MUC TIEU CHUA DUOC BAO PHU; CAN XEM LAI THAM SO.
+=== KIEM TRA TRU VUNG LAM VIEC MUC TIEU ===
+Luoi: z buoc 10 mm, rho buoc 10 mm, goc phuong vi buoc 5 deg
+Tong so diem: 74906
+Co nghiem IK + trong gioi han goc: 74792/74906 (99.8478%)
+Dat them Jacobian va mu>=30 deg: 74792/74906 (99.8478%)
+Diem khong dat tieu chi: 114
+Diem vuot gioi han goc: 0
+Goc khop lon nhat can trong luoi = 69.9215 deg tai [133 366 -1050] mm
+Vuot gioi han 70 deg lon nhat = -0.0785 deg tai [133 366 -1050] mm
+mu_min = 49.8004 deg tai [199 115 -800] mm
+cond(J)_max = 2.7492 tai [346 200 -1050] mm
+Sai so FK(IK(P)) lon nhat = 7.113e-13 mm
+KET LUAN: TRU MUC TIEU CHUA DUOC BAO PHU; CAN XEM LAI THAM SO.

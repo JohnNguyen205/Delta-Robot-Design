@@ -1,0 +1,15 @@
+﻿opened F:\DeltaRobot\BanVe_GiaCong\BanVe_ChinhSua_V7\DR-007_Moving-Platform.SLDDRW
+total dedup-hidden = 0
+view0 arranged: left=1 right=2 above=3 below=0 inside=0
+view1 arranged: left=1 right=5 above=0 below=0 inside=0
+view2 arranged: left=0 right=3 above=1 below=0 inside=0
+view0 resolve-overlaps: processed 6 items
+view1 resolve-overlaps: processed 7 items
+view2 resolve-overlaps: processed 4 items
+view0 OVERLAP CHECK: none (est. bbox)
+view1 OVERLAP CHECK: none (est. bbox)
+view2 OVERLAP CHECK: none (est. bbox)
+ANY OVERLAP REMAINING = False
+TITLE TABLE UNCHANGED: True
+save drw err=0 pdf err=0 pdfSize=61002
+DONE_OVERLAPFIX

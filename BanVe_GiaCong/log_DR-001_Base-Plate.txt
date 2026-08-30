@@ -1,0 +1,18 @@
+﻿part=DR-001_Base-Plate material=SOLIDWORKS Materials|ASTM A36 Steel|101 mass=193.868 kg
+SetupSheet5(1:5, firstAngle)=True
+units=MMGS, parentheses off
+Create1stAngleViews2=True
+iso view=True
+  autodim sel=True status=1
+view Drawing View1 : inserted=0 dimCount=25
+  autodim sel=True status=1
+view Drawing View2 : inserted=0 dimCount=138
+  autodim sel=True status=1
+view Drawing View3 : inserted=0 dimCount=21
+view Drawing View4 : inserted=0 dimCount=0
+note inserted
+views on sheet: 4 (expect 4)
+save SLDDRW err=0 warn=0
+save PDF err=0
+PDF size=79290
+DONEDRW

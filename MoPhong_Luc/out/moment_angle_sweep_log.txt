@@ -1,0 +1,59 @@
+=== QUET MO-MEN THEO GOC TAY CHU DONG ===
+Mo hinh doi xung, tai TCP di chuyen theo truc z.
+
+m_ee = 8.233 kg; a_z = 11.58 m/s^2; F_z = m_ee(g+a_z) = 176.10 N
+Gioi han quet: -45.00 ... 100.00 deg; so diem hop le: 1450/1451
+Sai so IK lon nhat tai diem hop le: 1.487e+00 deg
+
+--- KET QUA THEO CONG THUC CAN BANG LUC ---
+M_simplified,max = 40266.32 N.m tai theta = 34.30 deg
+  mu = 89.97 deg; N_i = 98785.06 N; M_load = 40254.91 N.m; M_arm = 11.41 N.m
+  M_chon = k_s*M_simplified,max = 60399.49 N.m (k_s=1.50)
+
+--- DOI CHIEU JACOBIAN TAI CUNG POSE ---
+M_jacobian,max = 41.78 N.m tai theta = 22.00 deg
+  mu = 74.83 deg; M_arm = 12.81 N.m; tau_jac = [-28.97 -28.97 -28.97] N.m
+
+Da luu: out/moment_angle_sweep_log.txt, out/moment_angle_sweep.csv,
+        out/moment_angle_sweep.mat, figs/moment_angle_sweep.png,
+        figs/transmission_force_angle.png
+=== QUET MO-MEN THEO GOC TAY CHU DONG ===
+Mo hinh doi xung, tai TCP di chuyen theo truc z.
+
+m_ee = 8.233 kg; a_z = 11.58 m/s^2; F_z = m_ee(g+a_z) = 176.10 N
+Gioi han quet: -45.00 ... 100.00 deg; so diem hop le: 775/1451
+Mien loc truyen luc: 30.0 <= mu <= 75.0 deg (loai vung gan singularity)
+Sai so IK lon nhat tai diem hop le: 8.906e-14 deg
+
+--- KET QUA THEO CONG THUC CAN BANG LUC ---
+M_simplified,max = 104.90 N.m tai theta = 22.10 deg
+  mu = 74.95 deg; N_i = 226.01 N; M_load = 92.10 N.m; M_arm = 12.80 N.m
+  M_chon = k_s*M_simplified,max = 157.35 N.m (k_s=1.50)
+
+--- DOI CHIEU JACOBIAN TAI CUNG POSE ---
+M_jacobian,max = 41.78 N.m tai theta = 22.00 deg
+  mu = 74.83 deg; M_arm = 12.81 N.m; tau_jac = [-28.97 -28.97 -28.97] N.m
+
+Da luu: out/moment_angle_sweep_log.txt, out/moment_angle_sweep.csv,
+        out/moment_angle_sweep.mat, figs/moment_angle_sweep.png,
+        figs/transmission_force_angle.png
+=== QUET MO-MEN THEO GOC TAY CHU DONG ===
+Mo hinh doi xung, tai TCP di chuyen theo truc z.
+
+m_ee = 8.233 kg; a_z = 11.58 m/s^2; F_z = m_ee(g+a_z) = 176.10 N
+Gioi han quet: -45.00 ... 100.00 deg; so diem hop le: 775/1451
+Mien loc truyen luc: 30.0 <= mu <= 75.0 deg (loai vung gan singularity)
+Sai so IK lon nhat tai diem hop le: 8.906e-14 deg
+
+--- KET QUA THEO CONG THUC CAN BANG LUC ---
+M_simplified,max = 104.90 N.m tai theta = 22.10 deg
+  mu = 74.95 deg; N_i = 226.01 N; M_load = 92.10 N.m; M_arm = 12.80 N.m
+  M_chon = k_s*M_simplified,max = 157.35 N.m (k_s=1.50)
+
+--- DOI CHIEU JACOBIAN TAI CUNG POSE ---
+M_jacobian,max = 41.78 N.m tai theta = 22.00 deg
+  mu = 74.83 deg; M_arm = 12.81 N.m; tau_jac = [-28.97 -28.97 -28.97] N.m
+
+Da luu: out/moment_angle_sweep_log.txt, out/moment_angle_sweep.csv,
+        out/moment_angle_sweep.mat, figs/moment_angle_sweep.png,
+        figs/transmission_force_angle.png

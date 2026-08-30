@@ -1,0 +1,11 @@
+﻿part=DR-001_Base-Plate mat=ASTM A36 Steel mass=193.868 bbox=788x250x786
+professional scale v6 -> 1:10 (same for all 4 views)
+SetupSheet5 1:10 firstAngle fmt=BLANK -> False
+border drawn (empty sheet)
+Create1stAngleViews2=True
+layout v6 grid: F=(0.115,0.238) S=(0.315,0.238) T=(0.115,0.137) ISO=(0.315,0.137) commonScale=0.1
+dim filter v6: kept 0 deleted 0; all annotations clamped to cells
+feature note inserted (complex pattern part)
+title table v3: True at (0.241,0.07)
+save drw err=0 pdf err=0 pdfSize=59096
+DONE2

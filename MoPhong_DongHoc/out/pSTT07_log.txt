@@ -1,0 +1,199 @@
+=== STT07: VUNG LAM VIEC (MAT DO DIEM) + QUY DAO CONG + L9 ===
+Thiet ke thuc te: L1=407.5 L2=1000.0 R=347.0 r=120.6 (Rr=226.4) th=[-45,100] deg
+
+--- BUOC A: quet luoi FK N=45 (91125 to hop) ---
+So diem voi-toi thuc (khong NaN, thoa giao 3 mat cau): 91125 / 91125 (100.0%)
+Thoi gian tinh Buoc A: 0.28 s
+Tu kiem tra: sai so max FK-vector-hoa vs delta_fk.m tren 25 mau = 3.411e-13 mm
+
+Da luu figs/pSTT07_workspace_cloud.png
+
+--- BUOC B: the tich vung lam viec (mat do diem, voxel 10mm) ---
+The tich vung lam viec (thiet ke thuc te) = 90812000 mm^3 = 0.0908 m^3 = 90.81 lit
+
+--- BUOC C: quet mat cat ngang (buoc z=15mm, day lat +-7.5mm) ---
+Mat cat lon nhat tai z = -639.12 mm, dien tich = 2211551.8 mm^2, duong kinh tuong duong = 1678.05 mm
+
+Da luu figs/pSTT07_max_crosssection.png
+
+--- BUOC D: bao phu quy dao cong (gate) tren thiet ke thuc te ---
+4 dinh hinh chu nhat quy dao (X:[-300,300] Z:[-1000,-820] tai Y=0): 4/4 voi-toi
+Toan bo quy dao quintic (601 diem, 0.30+0.60+0.30 s): 601/601 voi-toi (100.00%)
+
+[Warning: Ignoring extra legend entries.] 
+[> In legend>process_inputs (line 575)
+In legend>make_legend (line 294)
+In legend (line 245)
+In p_STT07_workspace_quydao (line 138)
+In run (line 112)] 
+Da luu figs/pSTT07_gate_coverage.png
+
+--- BUOC E: thi nghiem truc giao L9(3^4) tren 4 tham so ket cau ---
+  Run 0: L1=407.5 L2=1000.0 R=347.0 r=120.6 -> Vol=26989632 mm^3, Amax=2193216 mm^2 @z=-649, goc quy dao=4/4
+  Run 1: L1=350.0 L2=850.0 R=300.0 r=90.0 -> Vol=26961984 mm^3, Amax=1514675 mm^2 @z=-561, goc quy dao=4/4
+  Run 2: L1=350.0 L2=1000.0 R=347.0 r=120.6 -> Vol=26987904 mm^3, Amax=2024153 mm^2 @z=-671, goc quy dao=4/4
+  Run 3: L1=350.0 L2=1150.0 R=394.0 r=150.0 -> Vol=26987904 mm^3, Amax=2534171 mm^2 @z=-800, goc quy dao=2/4
+  Run 4: L1=407.5 L2=850.0 R=347.0 r=150.0 -> Vol=26946432 mm^3, Amax=1701859 mm^2 @z=-502, goc quy dao=4/4
+  Run 5: L1=407.5 L2=1000.0 R=394.0 r=90.0 -> Vol=26944704 mm^3, Amax=1790204 mm^2 @z=-694, goc quy dao=4/4
+  Run 6: L1=407.5 L2=1150.0 R=300.0 r=120.6 -> Vol=26946432 mm^3, Amax=3235065 mm^2 @z=-707, goc quy dao=2/4
+  Run 7: L1=465.0 L2=850.0 R=394.0 r=120.6 -> Vol=26148096 mm^3, Amax=1464720 mm^2 @z=-506, goc quy dao=4/4
+  Run 8: L1=465.0 L2=1000.0 R=300.0 r=150.0 -> Vol=26965440 mm^3, Amax=2747991 mm^2 @z=-537, goc quy dao=4/4
+  Run 9: L1=465.0 L2=1150.0 R=347.0 r=90.0 -> Vol=26987904 mm^3, Amax=2914022 mm^2 @z=-734, goc quy dao=4/4
+
+Da luu out/l9_results.csv (10 hang: Row0 + 9 hang L9)
+
+--- PHAN TICH PHAM VI (range analysis), 9 hang L9 (Row0 khong tinh) ---
+L1 (canh tay tren): gia tri muc [350.0 407.5 465.0]; TB the tich [26979264 26945856 26700480] mm^3; pham vi = 278784 mm^3
+L2 (thanh truyen): gia tri muc [850.0 1000.0 1150.0]; TB the tich [26685504 26966016 26974080] mm^3; pham vi = 288576 mm^3
+R (ban kinh de): gia tri muc [300.0 347.0 394.0]; TB the tich [26957952 26974080 26693568] mm^3; pham vi = 280512 mm^3
+r (ban kinh ban may): gia tri muc [90.0 120.6 150.0]; TB the tich [26964864 26694144 26966592] mm^3; pham vi = 272448 mm^3
+Xep hang muc do anh huong toi the tich vung lam viec (pham vi giam dan):
+  L2 (thanh truyen) (pham vi=288576)  >  R (ban kinh de) (pham vi=280512)  >  L1 (canh tay tren) (pham vi=278784)  >  r (ban kinh ban may) (pham vi=272448)
+
+3 hang L9 co the tich lon nhat (de doi chieu, KHONG phai de doi tham so thiet ke):
+  Run 2: L1=350.0 L2=1000.0 R=347.0 r=120.6 -> Vol=26987904 mm^3
+  Run 3: L1=350.0 L2=1150.0 R=394.0 r=150.0 -> Vol=26987904 mm^3
+  Run 9: L1=465.0 L2=1150.0 R=347.0 r=90.0 -> Vol=26987904 mm^3
+
+=== TOM TAT KET QUA STT07 (thiet ke thuc te, params.m) ===
+Buoc A: 91125 diem voi-toi thuc / 91125 to hop luoi (N=45), sai so tu-kiem-tra FK max=3.411e-13 mm
+Buoc B: the tich vung lam viec (voxel 10mm) = 90812000 mm^3 (0.0908 m^3)
+Buoc C: mat cat lon nhat tai z=-639.12 mm, A=2211551.8 mm^2, D_td=1678.05 mm
+Buoc D: 4 dinh hinh chu nhat quy dao = 4/4 voi-toi; toan bo duong quy dao = 601/601 (100.00%) voi-toi
+==> THIET KE THUC TE (Row 0) BAO PHU DAY DU quy dao cong pick-and-place (4/4 dinh, 100% duong di).
+Buoc E: xep hang anh huong toi the tich (pham vi giam dan): L2 (thanh truyen) > R (ban kinh de) > L1 (canh tay tren) > r (ban kinh ban may)
+  (Day la khao sat do nhay/kiem chung quanh thiet ke da chot boi cac buoc dong hoc/luc/FEA truoc do,
+   KHONG phai de xuat doi kich thuoc thuc te.)
+=== HET STT07 ===
+=== STT07: VUNG LAM VIEC (MAT DO DIEM) + QUY DAO CONG + L9 ===
+Thiet ke thuc te: L1=407.5 L2=1000.0 R=347.0 r=120.6 (Rr=226.4) th=[-45,100] deg
+
+--- BUOC A: quet luoi FK N=45 (91125 to hop) ---
+So diem voi-toi thuc (khong NaN, thoa giao 3 mat cau): 91125 / 91125 (100.0%)
+Thoi gian tinh Buoc A: 0.32 s
+Tu kiem tra: sai so max FK-vector-hoa vs delta_fk.m tren 25 mau = 3.411e-13 mm
+
+Da luu figs/pSTT07_workspace_cloud.png
+
+--- BUOC B: the tich vung lam viec (mat do diem, voxel 10mm) ---
+The tich vung lam viec (thiet ke thuc te) = 90812000 mm^3 = 0.0908 m^3 = 90.81 lit
+
+--- BUOC C: quet mat cat ngang (buoc z=15mm, day lat +-7.5mm) ---
+Mat cat lon nhat tai z = -639.12 mm, dien tich = 2211551.8 mm^2, duong kinh tuong duong = 1678.05 mm
+
+Da luu figs/pSTT07_max_crosssection.png
+
+--- BUOC D: bao phu quy dao cong (gate) tren thiet ke thuc te ---
+4 dinh hinh chu nhat quy dao (X:[-300,300] Z:[-1000,-820] tai Y=0): 4/4 voi-toi
+Toan bo quy dao quintic (601 diem, 0.30+0.60+0.30 s): 601/601 voi-toi (100.00%)
+
+[Warning: Ignoring extra legend entries.] 
+[> In legend>process_inputs (line 575)
+In legend>make_legend (line 294)
+In legend (line 245)
+In p_STT07_workspace_quydao (line 138)] 
+Da luu figs/pSTT07_gate_coverage.png
+
+--- BUOC E: thi nghiem truc giao L9(3^4) tren 4 tham so ket cau ---
+  Run 0: L1=407.5 L2=1000.0 R=347.0 r=120.6 -> Vol=26989632 mm^3, Amax=2193216 mm^2 @z=-649, goc quy dao=4/4
+  Run 1: L1=350.0 L2=850.0 R=300.0 r=90.0 -> Vol=26961984 mm^3, Amax=1514675 mm^2 @z=-561, goc quy dao=4/4
+  Run 2: L1=350.0 L2=1000.0 R=347.0 r=120.6 -> Vol=26987904 mm^3, Amax=2024153 mm^2 @z=-671, goc quy dao=4/4
+  Run 3: L1=350.0 L2=1150.0 R=394.0 r=150.0 -> Vol=26987904 mm^3, Amax=2534171 mm^2 @z=-800, goc quy dao=2/4
+  Run 4: L1=407.5 L2=850.0 R=347.0 r=150.0 -> Vol=26946432 mm^3, Amax=1701859 mm^2 @z=-502, goc quy dao=4/4
+  Run 5: L1=407.5 L2=1000.0 R=394.0 r=90.0 -> Vol=26944704 mm^3, Amax=1790204 mm^2 @z=-694, goc quy dao=4/4
+  Run 6: L1=407.5 L2=1150.0 R=300.0 r=120.6 -> Vol=26946432 mm^3, Amax=3235065 mm^2 @z=-707, goc quy dao=2/4
+  Run 7: L1=465.0 L2=850.0 R=394.0 r=120.6 -> Vol=26148096 mm^3, Amax=1464720 mm^2 @z=-506, goc quy dao=4/4
+  Run 8: L1=465.0 L2=1000.0 R=300.0 r=150.0 -> Vol=26965440 mm^3, Amax=2747991 mm^2 @z=-537, goc quy dao=4/4
+  Run 9: L1=465.0 L2=1150.0 R=347.0 r=90.0 -> Vol=26987904 mm^3, Amax=2914022 mm^2 @z=-734, goc quy dao=4/4
+
+Da luu out/l9_results.csv (10 hang: Row0 + 9 hang L9)
+
+--- PHAN TICH PHAM VI (range analysis), 9 hang L9 (Row0 khong tinh) ---
+L1 (canh tay tren): gia tri muc [350.0 407.5 465.0]; TB the tich [26979264 26945856 26700480] mm^3; pham vi = 278784 mm^3
+L2 (thanh truyen): gia tri muc [850.0 1000.0 1150.0]; TB the tich [26685504 26966016 26974080] mm^3; pham vi = 288576 mm^3
+R (ban kinh de): gia tri muc [300.0 347.0 394.0]; TB the tich [26957952 26974080 26693568] mm^3; pham vi = 280512 mm^3
+r (ban kinh ban may): gia tri muc [90.0 120.6 150.0]; TB the tich [26964864 26694144 26966592] mm^3; pham vi = 272448 mm^3
+Xep hang muc do anh huong toi the tich vung lam viec (pham vi giam dan):
+  L2 (thanh truyen) (pham vi=288576)  >  R (ban kinh de) (pham vi=280512)  >  L1 (canh tay tren) (pham vi=278784)  >  r (ban kinh ban may) (pham vi=272448)
+
+3 hang L9 co the tich lon nhat (de doi chieu, KHONG phai de doi tham so thiet ke):
+  Run 2: L1=350.0 L2=1000.0 R=347.0 r=120.6 -> Vol=26987904 mm^3
+  Run 3: L1=350.0 L2=1150.0 R=394.0 r=150.0 -> Vol=26987904 mm^3
+  Run 9: L1=465.0 L2=1150.0 R=347.0 r=90.0 -> Vol=26987904 mm^3
+
+=== TOM TAT KET QUA STT07 (thiet ke thuc te, params.m) ===
+Buoc A: 91125 diem voi-toi thuc / 91125 to hop luoi (N=45), sai so tu-kiem-tra FK max=3.411e-13 mm
+Buoc B: the tich vung lam viec (voxel 10mm) = 90812000 mm^3 (0.0908 m^3)
+Buoc C: mat cat lon nhat tai z=-639.12 mm, A=2211551.8 mm^2, D_td=1678.05 mm
+Buoc D: 4 dinh hinh chu nhat quy dao = 4/4 voi-toi; toan bo duong quy dao = 601/601 (100.00%) voi-toi
+==> THIET KE THUC TE (Row 0) BAO PHU DAY DU quy dao cong pick-and-place (4/4 dinh, 100% duong di).
+Buoc E: xep hang anh huong toi the tich (pham vi giam dan): L2 (thanh truyen) > R (ban kinh de) > L1 (canh tay tren) > r (ban kinh ban may)
+  (Day la khao sat do nhay/kiem chung quanh thiet ke da chot boi cac buoc dong hoc/luc/FEA truoc do,
+   KHONG phai de xuat doi kich thuoc thuc te.)
+=== HET STT07 ===
+=== STT07: VUNG LAM VIEC (MAT DO DIEM) + QUY DAO CONG + L9 ===
+Thiet ke thuc te: L1=407.5 L2=1000.0 R=347.0 r=120.6 (Rr=226.4) th=[-45,70] deg
+
+--- BUOC A: quet luoi FK N=45 (91125 to hop) ---
+So diem voi-toi thuc (khong NaN, thoa giao 3 mat cau): 91125 / 91125 (100.0%)
+Thoi gian tinh Buoc A: 0.40 s
+Tu kiem tra: sai so max FK-vector-hoa vs delta_fk.m tren 25 mau = 2.898e-13 mm
+
+Da luu figs/pSTT07_workspace_cloud.png
+
+--- BUOC B: the tich vung lam viec (mat do diem, voxel 10mm) ---
+The tich vung lam viec (thiet ke thuc te) = 89291000 mm^3 = 0.0893 m^3 = 89.29 lit
+
+--- BUOC C: quet mat cat ngang (buoc z=15mm, day lat +-7.5mm) ---
+Mat cat lon nhat tai z = -698.63 mm, dien tich = 1237795.0 mm^2, duong kinh tuong duong = 1255.39 mm
+
+Da luu figs/pSTT07_max_crosssection.png
+
+--- BUOC D: bao phu quy dao cong (gate) tren thiet ke thuc te ---
+4 dinh hinh chu nhat quy dao (X:[-300,300] Z:[-1000,-820] tai Y=0): 4/4 voi-toi
+Toan bo quy dao quintic (601 diem, 0.30+0.60+0.30 s): 601/601 voi-toi (100.00%)
+
+[Warning: Ignoring extra legend entries.] 
+[> In legend>process_inputs (line 575)
+In legend>make_legend (line 294)
+In legend (line 245)
+In p_STT07_workspace_quydao (line 138)] 
+Da luu figs/pSTT07_gate_coverage.png
+
+--- BUOC E: thi nghiem truc giao L9(3^4) tren 4 tham so ket cau ---
+  Run 0: L1=407.5 L2=1000.0 R=347.0 r=120.6 -> Vol=26984448 mm^3, Amax=1241519 mm^2 @z=-694, goc quy dao=4/4
+  Run 1: L1=350.0 L2=850.0 R=300.0 r=90.0 -> Vol=26775360 mm^3, Amax=840924 mm^2 @z=-592, goc quy dao=2/4
+  Run 2: L1=350.0 L2=1000.0 R=347.0 r=120.6 -> Vol=26986176 mm^3, Amax=1181419 mm^2 @z=-727, goc quy dao=4/4
+  Run 3: L1=350.0 L2=1150.0 R=394.0 r=150.0 -> Vol=27000000 mm^3, Amax=1545312 mm^2 @z=-860, goc quy dao=2/4
+  Run 4: L1=407.5 L2=850.0 R=347.0 r=150.0 -> Vol=26751168 mm^3, Amax=906343 mm^2 @z=-544, goc quy dao=2/4
+  Run 5: L1=407.5 L2=1000.0 R=394.0 r=90.0 -> Vol=26604288 mm^3, Amax=952744 mm^2 @z=-699, goc quy dao=4/4
+  Run 6: L1=407.5 L2=1150.0 R=300.0 r=120.6 -> Vol=27000000 mm^3, Amax=2007480 mm^2 @z=-788, goc quy dao=2/4
+  Run 7: L1=465.0 L2=850.0 R=394.0 r=120.6 -> Vol=24463296 mm^3, Amax=655028 mm^2 @z=-509, goc quy dao=2/4
+  Run 8: L1=465.0 L2=1000.0 R=300.0 r=150.0 -> Vol=27000000 mm^3, Amax=1595430 mm^2 @z=-628, goc quy dao=4/4
+  Run 9: L1=465.0 L2=1150.0 R=347.0 r=90.0 -> Vol=27000000 mm^3, Amax=1662357 mm^2 @z=-789, goc quy dao=4/4
+
+Da luu out/l9_results.csv (10 hang: Row0 + 9 hang L9)
+
+--- PHAN TICH PHAM VI (range analysis), 9 hang L9 (Row0 khong tinh) ---
+L1 (canh tay tren): gia tri muc [350.0 407.5 465.0]; TB the tich [26920512 26785152 26154432] mm^3; pham vi = 766080 mm^3
+L2 (thanh truyen): gia tri muc [850.0 1000.0 1150.0]; TB the tich [25996608 26863488 27000000] mm^3; pham vi = 1003392 mm^3
+R (ban kinh de): gia tri muc [300.0 347.0 394.0]; TB the tich [26925120 26912448 26022528] mm^3; pham vi = 902592 mm^3
+r (ban kinh ban may): gia tri muc [90.0 120.6 150.0]; TB the tich [26793216 26149824 26917056] mm^3; pham vi = 767232 mm^3
+Xep hang muc do anh huong toi the tich vung lam viec (pham vi giam dan):
+  L2 (thanh truyen) (pham vi=1003392)  >  R (ban kinh de) (pham vi=902592)  >  r (ban kinh ban may) (pham vi=767232)  >  L1 (canh tay tren) (pham vi=766080)
+
+3 hang L9 co the tich lon nhat (de doi chieu, KHONG phai de doi tham so thiet ke):
+  Run 3: L1=350.0 L2=1150.0 R=394.0 r=150.0 -> Vol=27000000 mm^3
+  Run 6: L1=407.5 L2=1150.0 R=300.0 r=120.6 -> Vol=27000000 mm^3
+  Run 8: L1=465.0 L2=1000.0 R=300.0 r=150.0 -> Vol=27000000 mm^3
+
+=== TOM TAT KET QUA STT07 (thiet ke thuc te, params.m) ===
+Buoc A: 91125 diem voi-toi thuc / 91125 to hop luoi (N=45), sai so tu-kiem-tra FK max=2.898e-13 mm
+Buoc B: the tich vung lam viec (voxel 10mm) = 89291000 mm^3 (0.0893 m^3)
+Buoc C: mat cat lon nhat tai z=-698.63 mm, A=1237795.0 mm^2, D_td=1255.39 mm
+Buoc D: 4 dinh hinh chu nhat quy dao = 4/4 voi-toi; toan bo duong quy dao = 601/601 (100.00%) voi-toi
+==> THIET KE THUC TE (Row 0) BAO PHU DAY DU quy dao cong pick-and-place (4/4 dinh, 100% duong di).
+Buoc E: xep hang anh huong toi the tich (pham vi giam dan): L2 (thanh truyen) > R (ban kinh de) > r (ban kinh ban may) > L1 (canh tay tren)
+  (Day la khao sat do nhay/kiem chung quanh thiet ke da chot boi cac buoc dong hoc/luc/FEA truoc do,
+   KHONG phai de xuat doi kich thuoc thuc te.)
+=== HET STT07 ===

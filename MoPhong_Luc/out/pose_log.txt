@@ -1,0 +1,45 @@
+=== TAI TRONG FEA DA TU THE (payload 2 kg) ===
+
+m_ee=8.233 kg, a_pk=11.58 m/s^2, L1=407.5 mm
+
+Tu the                            x      y       z   fmax     Fee  cond
+Tam vung LV (R0,z-925)            0      0    -925  139.2  176.1  1.83
+Bien R400 az000 z-800           400      0    -800  172.8  176.1  2.13
+Bien R400 az030 z-800           346    200    -800  173.6  176.1  2.13
+Bien R400 az060 z-800           200    346    -800  171.0  176.1  2.13
+Bien R400 az090 z-800             0    400    -800  155.7  176.1  2.14
+Bien R400 az120 z-800          -200    346    -800  171.0  176.1  2.13
+Bien R400 az150 z-800          -346    200    -800  173.6  176.1  2.13
+Bien R400 az180 z-800          -400      0    -800  172.8  176.1  2.13
+Bien R400 az210 z-800          -346   -200    -800  161.9  176.1  2.14
+Bien R400 az240 z-800          -200   -346    -800  174.6  176.1  2.13
+Bien R400 az270 z-800            -0   -400    -800  178.8  176.1  2.13
+Bien R400 az300 z-800           200   -346    -800  174.6  176.1  2.13
+Bien R400 az330 z-800           346   -200    -800  161.9  176.1  2.14
+Bien R400 az000 z-1050          400      0   -1050  179.4  176.1  2.73
+Bien R400 az030 z-1050          346    200   -1050  179.6  176.1  2.75
+Bien R400 az060 z-1050          200    346   -1050  179.4  176.1  2.73
+Bien R400 az090 z-1050            0    400   -1050  175.6  176.1  2.70
+Bien R400 az120 z-1050         -200    346   -1050  179.4  176.1  2.73
+Bien R400 az150 z-1050         -346    200   -1050  179.6  176.1  2.75
+Bien R400 az180 z-1050         -400      0   -1050  179.4  176.1  2.73
+Bien R400 az210 z-1050         -346   -200   -1050  175.2  176.1  2.70
+Bien R400 az240 z-1050         -200   -346   -1050  181.4  176.1  2.73
+Bien R400 az270 z-1050           -0   -400   -1050  182.4  176.1  2.75
+Bien R400 az300 z-1050          200   -346   -1050  181.4  176.1  2.73
+Bien R400 az330 z-1050          346   -200   -1050  175.2  176.1  2.70
+Waypoint P&P 1                  300      0   -1000  168.4  176.1  2.28
+Waypoint P&P 2                  300      0    -820  166.5  176.1  2.00
+Waypoint P&P 3                 -300      0    -820  166.5  176.1  2.00
+Waypoint P&P 4                 -300      0   -1000  168.4  176.1  2.28
+
+--- WORST-CASE toan vung lam viec ---
+ fmax (cap forearm)  = 182.4 N  tai [Bien R400 az270 z-1050]
+ Fee  (luc TCP)      = 176.1 N  tai [Tam vung LV (R0,z-925)]
+ tau  (mo men khop)  = 74.3 N.m tai [Bien R400 az270 z-1050]
+ Mbend bicep (fmax*L1)= 74.3 N.m
+
+ So voi tai BASELINE (quy dao P&P): fmax=122.7 N, Fee=175.8 N.
+ Ti so tang: fmax x1.49, Fee x1.00
+
+Da luu: out/pose_log.txt, out/pose_results.mat, figs/pose_fmax_workspace.png

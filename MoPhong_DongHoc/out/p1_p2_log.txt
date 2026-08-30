@@ -1,0 +1,19 @@
+=== THONG SO ===
+R=347.0 r=120.6 (R-r=226.4) L1=407.5 L2=1000.0 mm; phi=[-90 30 150] deg
+
+=== HOME P=(0.0, 0.0, -925.0) ===
+IK ok=1  theta = [19.146 19.146 19.146] deg
+FK(theta) = (-0.0000, 0.0000, -925.0000)  |sai so|=2.296e-13 mm
+
+=== DIEM MAU ===
+P=( 200.0,   0.0, -925.0) ok=1 th=[  22.1    5.9   36.8]deg  err=2.32e-13
+P=(   0.0, 200.0,-1025.0) ok=1 th=[  48.7   25.2   25.2]deg  err=2.54e-13
+P=(-150.0,-150.0, -825.0) ok=1 th=[  -5.4   30.3    4.9]deg  err=1.30e-13
+P=( 300.0, 100.0, -850.0) ok=1 th=[  27.6  -13.9   37.1]deg  err=1.30e-13
+
+=== ROUND-TRIP (tru Ø800x250, tam z=-925) ===
+So diem: 3000, voi-toi: 3000 (100.0%)
+Sai so FK(IK(P)) vs P:  max=6.207e-13  mean=2.256e-13  median=2.230e-13 mm
+
+>>> KET LUAN Phase 1+2: DAT (nguong 1e-6 mm)
+Da luu figs/p2_roundtrip_hist.png
