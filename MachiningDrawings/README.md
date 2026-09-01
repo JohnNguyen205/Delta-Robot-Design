@@ -1,30 +1,36 @@
-# BAN VE GIA CONG CO KHI - DELTA ROBOT (v6, 2026-07-16)
+# Machining drawings — Delta Robot
 
-Thu muc gom ban ve cua 8 chi tiet tu che. Moi chi tiet co file `.SLDDRW` de hieu chinh va `.pdf` de in/nop. Linh kien mua san khong xuat ban ve.
+Fabrication drawings for the 8 machined parts (purchased parts are not drawn).
+Each part has a `.SLDDRW` (editable) and a `.pdf` (for printing / submission).
+The current set is **V7**, in `BanVe_ChinhSua_V7/`.
 
-## Chuan trinh bay v6
+## Drawing standard
 
-- Kho A3 ngang, don vi mm, chieu goc thu nhat theo TCVN/ISO.
-- Bon hinh tren moi trang: ba hinh chieu vuong goc va mot hinh truc do 3D.
-- Ca bon hinh dung cung mot ti le, bo tri tren luoi 2x2 co dinh.
-- Vung hinh ve tach khoi khung ten; khong de leader, text hoac hinh hoc vuot khung.
-- Kich thuoc chi dat tren hinh chieu chinh; cac hinh con lai giu sach de doi chieu.
-- DR-001, DR-004 va DR-007 dung khoi ghi chu quy cach lo/PCD va dung sai chung; bien dang cong lay model 3D lam du lieu goc gia cong.
+- A3 landscape, millimetres, first-angle projection (TCVN / ISO).
+- Four views per sheet: three orthographic + one 3D isometric, all at one common
+  scale on a fixed 2 × 2 grid.
+- Drawing area kept clear of the title block; no leader / text / geometry crosses
+  the border.
+- Dimensions on the primary view only; the other views stay clean for reference.
+- DR-001-x, DR-004 and DR-007 carry a note block for hole spec / PCD and general
+  tolerances; freeform surfaces take the 3D model as the machining master.
 
-| Ban ve | Chi tiet | Ti le chung 4 hinh |
+| Drawing | Part | Common scale |
 |---|---|---:|
-| DR-001_Base-Plate | Tam de + mat treo | 1:10 |
-| DR-002_Motor-Bracket-A | Ga dong co A | 1:4 |
-| DR-003_Motor-Bracket-B | Ga dong co B | 1:4 |
-| DR-004_Shoulder-Bracket | Ga vai | 1:1 |
-| DR-005-1_Upper-Arm-Hub | Bau bap tay | 1:4 |
-| DR-005-2_Upper-Arm-Link | Than bap tay | 1:5 |
-| DR-006_Elbow-Clevis | Chac khuyu | 1:4 |
-| DR-007_Moving-Platform | Ban may dong | 1:4 |
+| DR-001-1 / -2 / -3 | mounting plate / welded frame / hanging lid | 1:10 |
+| DR-002 | Motor bracket A | 1:4 |
+| DR-003 | Motor bracket B | 1:4 |
+| DR-004 | Shoulder bracket | 1:1 |
+| DR-005-1 | Upper-arm hub | 1:4 |
+| DR-005-2 | Upper-arm link | 1:5 |
+| DR-006 | Elbow clevis | 1:4 |
+| DR-007 | Moving platform | 1:4 |
 
-## Tai sinh
+## Regeneration
 
-Script nguon: `make_drawing2.ps1`. Script doc vat lieu/khoi luong tu part dang hoat dong trong `DeltaRobot_Final`, tao lai khung, bon view, khung ten, sau do xuat SLDDRW/PDF.
+Source scripts: `make_drawing2.ps1` (V6) and `BanVe_ChinhSua_V7/make_drawing_v7.ps1`
+(V7), driven over COM. They read material / mass from the live part in
+`DeltaRobot_Final/`, rebuild the border, four views and title block, then export
+`.SLDDRW` + `.pdf`.
 
-Bao cao kiem tra: `KIEMTRA_BANVE_V6.md`.
-
+Check report: `BanVe_ChinhSua_V7/KIEMTRA_BANVE_V7.md`.
