@@ -3,7 +3,7 @@
 > **Mechanical design project** — Ho Chi Minh City University of Technology and Education (HCMUTE).
 > Complete mechanical design of a ceiling-mounted 3-DOF Delta parallel robot for high-speed pick-and-place, benchmarked against the ABB IRB 360 FlexPicker.
 
-This repository contains the SolidWorks CAD model, the MATLAB analysis and simulation code, the finite-element (FEA) results, and the machining drawings. Every conclusion is backed by data read back from the model or the solver — no assumed figures. All figures below are taken from the design analysis and FEA results.
+This repository contains the SolidWorks CAD model, the MATLAB analysis and simulation code, the finite-element (FEA) results, the machining drawings, and the electrical / control-system and machine-vision design. Every conclusion is backed by data read back from the model or the solver — no assumed figures. All figures below are taken from the design analysis, the FEA results and the control-system design.
 
 ---
 
@@ -150,7 +150,66 @@ SolidWorks Simulation, static studies on the load-bearing parts with the peak dy
 
 ---
 
-## 8. Design report — chapters
+## 8. Electrical & control system
+
+The control system is a Siemens motion-control stack. An industrial PC (**SIMATIC IPC**) runs the vision pipeline and streams pick coordinates over **PROFINET** to a **SIMOTION D** motion controller, which carries a built-in Delta technology object (synchronous three-axis interpolation). SIMOTION drives three **SINAMICS S120** motor modules over **DRIVE-CLiQ**, one per arm, each powering a **TPMA010S-055T** gearmotor with incremental-encoder feedback. The three motor modules share one Active Line Module (common DC bus), so braking energy is recovered between axes.
+
+Safety is a hardwired chain independent of the main controller: an E-Stop / limit-switch loop (Siemens 3RG40 / SIRIUS 3SK) triggers **STO** (Safe Torque Off, IEC 61800-5-2) directly on the SINAMICS drives through a SIRIUS 3SK safety relay.
+
+Servo power is **320 V AC** (per the TPMA010S-055T datasheet); SIMOTION, the SIRIUS relay and the IPC share a **24 V DC** control supply (IEC 61131-2); the camera is powered over its GigE link. DC-supply and fuse ratings, and the conveyor branch, are not yet dimensioned.
+
+| Link | Bus / standard | Purpose |
+|---|---|---|
+| Camera (Basler acA1300-30gc) ↔ SIMATIC IPC | GigE Vision (Ethernet ≤ 1000 Mbps) | raw high-speed image transfer |
+| SIMATIC IPC ↔ SIMOTION D | PROFINET IO (real-time industrial Ethernet) | pick coordinates / status |
+| SIMOTION D ↔ SINAMICS S120 (×3) | DRIVE-CLiQ (internal bus, same rack) | servo control, real-time encoder feedback |
+| SIRIUS 3SK ↔ SINAMICS S120 | STO (IEC 61800-5-2, hardwired) | controller-independent safe torque off |
+| E-Stop / limit switch (3RG40) ↔ SIRIUS 3SK | hardwired digital I/O | safety signal |
+| SINAMICS S120 ↔ TPMA010S-055T (×3) | power cable + incremental-encoder cable | servo power, position feedback |
+| AC mains ↔ SINAMICS S120 | 320 V AC | drive power |
+| DC supply ↔ IPC / SIMOTION / SIRIUS | 24 V DC | control power |
+
+<p align="center">
+  <img src="docs/figures/fig-5-6-control-block-diagram.png" width="60%" alt="Control system block diagram">
+</p>
+
+<p align="center"><b>Fig. 5.6.</b> Control-system block diagram — vision IPC, SIMOTION D motion controller, three SINAMICS S120 drives on a shared DC bus, and the SIRIUS / STO safety branch.</p>
+
+<p align="center">
+  <img src="docs/figures/fig-5-7-power-distribution.png" width="60%" alt="Power distribution diagram">
+</p>
+
+<p align="center"><b>Fig. 5.7.</b> Power distribution — AC mains through E-Stop and fuse to 320 V AC for the three drives and a 24 V DC control supply for the IPC, SIMOTION D and SIRIUS relay.</p>
+
+## 9. Machine vision (image processing)
+
+Each frame is converted from BGR to HSV, then two branches run in parallel. The **shape** branch performs corner / blob detection and template matching, classifying every object as circle, square or triangle. The **colour** branch applies fixed HSV thresholds for red, green and yellow and detects blobs by area. The two results are merged into a `(colour, shape)` label per object, and the corresponding pick coordinate is sent to the IPC.
+
+| Colour | Lower (H, S, V) | Upper (H, S, V) |
+|---|---|---|
+| Red | (173, 0, 0) | (255, 255, 255) |
+| Yellow | (18, 0, 76) | (36, 255, 255) |
+| Green | (58, 155, 114) | (85, 255, 255) |
+
+On a synthetic test image of 9 objects (3 shapes × 3 colours) on a dark, conveyor-like background, the algorithm returned the correct `(colour, shape)` label for **all 9**, and the red threshold isolated a clean binary mask containing only the 3 red objects — confirming the pipeline before integration with a real camera.
+
+A pixel coordinate (u, v) is mapped to a physical pick point (X, Y) through three coordinate frames — camera {C}, robot base {B} and conveyor {W} — by a linear calibration.
+
+<p align="center">
+  <img src="docs/figures/fig-5-1-vision-flowchart.png" width="70%" alt="Colour and shape recognition flowchart">
+</p>
+
+<p align="center"><b>Fig. 5.1.</b> Colour- and shape-recognition algorithm: parallel shape branch (corner / blob detection, template match → circle / square / triangle) and colour branch (HSV threshold → red / green / yellow, blob by area).</p>
+
+<p align="center">
+  <img src="docs/figures/fig-5-5-vision-classification.png" width="70%" alt="Threshold tuning and multi-object classification result">
+</p>
+
+<p align="center"><b>Fig. 5.5.</b> Threshold tuning per colour (left) and the resulting multi-object classification on the simulated conveyor image (right).</p>
+
+---
+
+## 10. Design report — chapters
 
 | Chapter | Title | What it covers |
 |---|---|---|
