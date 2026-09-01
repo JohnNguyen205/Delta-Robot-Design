@@ -44,45 +44,49 @@ This repository contains the SolidWorks CAD model, the MATLAB analysis and simul
 
 ### Geometric model
 
-For arm $i$ with azimuth $\phi_i$ ($\phi=(-90^\circ,\,30^\circ,\,150^\circ)$), write $c_i=\cos\phi_i$, $s_i=\sin\phi_i$; the motor angle $\theta_i$ is measured downward from the shoulder plane. The base joint, platform joint and elbow of each arm are
+Each arm $i$ has a fixed azimuth $\phi_i$; the three arms sit at −90°, 30° and 150°. Writing $c_i=\cos\phi_i$ and $s_i=\sin\phi_i$, and measuring the motor angle $\theta_i$ downward from the shoulder plane, the base joint, the platform joint and the elbow of arm $i$ are
 
-$$\mathbf{B}_i = R\,(c_i,\; s_i,\; 0)$$
+$$\mathbf{B}_i = R\,(c_i,\ s_i,\ 0)$$
 
-$$\mathbf{P}_i = \mathbf{P} + r\,(c_i,\; s_i,\; 0)$$
+$$\mathbf{P}_i = \mathbf{P} + r\,(c_i,\ s_i,\ 0)$$
 
-$$\mathbf{E}_i = \mathbf{B}_i + L_1\,(\cos\theta_i\,c_i,\;\; \cos\theta_i\,s_i,\;\; -\sin\theta_i)$$
+$$\mathbf{E}_i = \mathbf{B}_i + L_1\,(c_i\cos\theta_i,\ s_i\cos\theta_i,\ -\sin\theta_i)$$
 
-and the rigid forearm imposes one closure equation per arm:
+The rigid forearm gives one closure equation per arm:
 
-$$\lVert\, \mathbf{E}_i - \mathbf{P}_i \,\rVert = L_2 .$$
+$$\lVert \mathbf{E}_i - \mathbf{P}_i \rVert = L_2$$
 
 ### Inverse kinematics (closed form)
 
-For a target $\mathbf{P}=(x,y,z)$, expanding the closure equation reduces each arm to a single equation in $\theta_i$:
+For a target $\mathbf{P}=(x,y,z)$ the closure equation of each arm reduces to a single equation in $\theta_i$:
 
 $$E_i\sin\theta_i + F_i\cos\theta_i + G_i = 0$$
 
-$$u_i = (x\,c_i + y\,s_i) - (R-r), \qquad w_i = -x\,s_i + y\,c_i$$
+$$u_i = x\,c_i + y\,s_i - (R-r), \qquad w_i = -x\,s_i + y\,c_i$$
 
-$$E_i = 2L_1 z, \qquad F_i = -2L_1 u_i, \qquad G_i = L_1^{2} + u_i^{2} + w_i^{2} + z^{2} - L_2^{2}$$
+$$E_i = 2 L_1 z, \qquad F_i = -2 L_1 u_i, \qquad G_i = L_1^2 + u_i^2 + w_i^2 + z^2 - L_2^2$$
 
-With $\rho_i=\sqrt{E_i^{2}+F_i^{2}}$ and $\psi_i=\operatorname{atan2}(F_i,E_i)$ the solution is
+With $\rho_i=\sqrt{E_i^2+F_i^2}$ and $\psi_i=\mathrm{atan2}(F_i,\ E_i)$:
 
-$$\theta_i = \arcsin\!\left(\frac{-G_i}{\rho_i}\right) - \psi_i \qquad (\theta_i \in [-45^\circ,\,70^\circ],\ \text{elbow-down root}).$$
+$$\theta_i = \arcsin\!\left(\frac{-G_i}{\rho_i}\right) - \psi_i$$
 
-A real solution exists only if $|G_i| \le \rho_i$; otherwise $\mathbf{P}$ is outside the reachable workspace.
+taking the elbow-down root inside the range −45° … 70°. A real solution exists only if $|G_i| \le \rho_i$; otherwise $\mathbf{P}$ lies outside the reachable workspace.
 
 ### Forward kinematics
 
-Given $\boldsymbol\theta$, shift each elbow to a virtual centre $\mathbf{C}_i = \mathbf{E}_i - r\,(c_i,\,s_i,\,0)$. The platform centre $\mathbf{P}$ is the trilateration of three spheres of radius $L_2$ about $\mathbf{C}_1,\mathbf{C}_2,\mathbf{C}_3$, taking the lower-$z$ intersection. Round-trip check: $\lVert \mathbf{P} - \mathrm{FK}(\mathrm{IK}(\mathbf{P})) \rVert \le 6.2\times10^{-13}$ mm over 3000 points (§2).
+Given the three angles, shift each elbow to a virtual centre $\mathbf{C}_i = \mathbf{E}_i - r\,(c_i,\ s_i,\ 0)$. The platform centre $\mathbf{P}$ is the intersection (trilateration) of three spheres of radius $L_2$ centred at $\mathbf{C}_1,\mathbf{C}_2,\mathbf{C}_3$, keeping the lower-$z$ root. Round-trip check: the error $\lVert \mathbf{P} - \mathrm{FK}(\mathrm{IK}(\mathbf{P})) \rVert$ stays below $6.2\times10^{-13}$ mm over 3000 points (see §2).
 
-### Velocity Jacobian & singularity
+### Velocity Jacobian and singularity
 
 Differentiating the three closure equations gives
 
-$$\mathbf{A}\,\dot{\mathbf{P}} = \mathbf{B}\,\dot{\boldsymbol\theta}, \qquad \dot{\mathbf{P}} = \mathbf{J}\,\dot{\boldsymbol\theta}, \qquad \mathbf{J} = \mathbf{A}^{-1}\mathbf{B}$$
+$$\mathbf{A}\,\dot{\mathbf{P}} = \mathbf{B}\,\dot{\boldsymbol{\theta}}, \qquad \dot{\mathbf{P}} = \mathbf{J}\,\dot{\boldsymbol{\theta}}, \qquad \mathbf{J} = \mathbf{A}^{-1}\mathbf{B}$$
 
-where row $i$ of $\mathbf{A}$ is the forearm direction $(\mathbf{E}_i-\mathbf{P}_i)^{\top}$, and $\mathbf{B}=\operatorname{diag}(b_i)$ with $b_i = L_1\,(\mathbf{E}_i-\mathbf{P}_i)^{\top}\hat{\mathbf{v}}_i$, $\ \hat{\mathbf{v}}_i = (-\sin\theta_i\,c_i,\; -\sin\theta_i\,s_i,\; -\cos\theta_i)$. Then $\det\mathbf{A}=0$ is a parallel (Type II) singularity, $\det\mathbf{B}=0$ a boundary (Type I) singularity, and $\kappa(\mathbf{J})$ measures proximity to one. Over the target workspace $\kappa(\mathbf{J})_{\max}=2.75$ with no singular points.
+Row $i$ of $\mathbf{A}$ is the forearm direction $(\mathbf{E}_i-\mathbf{P}_i)^{T}$, and $\mathbf{B}$ is diagonal with
+
+$$B_{ii} = L_1\,(\mathbf{E}_i-\mathbf{P}_i)^{T}\,\hat{\mathbf{v}}_i, \qquad \hat{\mathbf{v}}_i = (-c_i\sin\theta_i,\ -s_i\sin\theta_i,\ -\cos\theta_i)$$
+
+Here $\det\mathbf{A}=0$ marks a parallel (Type II) singularity, $\det\mathbf{B}=0$ a boundary (Type I) singularity, and the condition number $\kappa(\mathbf{J})$ measures how close a pose is to one. Over the target workspace $\kappa(\mathbf{J}) \le 2.75$ with no singular points.
 
 ## 2. Kinematics verification
 
