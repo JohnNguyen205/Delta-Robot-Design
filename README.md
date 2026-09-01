@@ -1,9 +1,9 @@
 # Delta Robot Design — 3-DOF Parallel Robot Mechanical Design
 
-> **Graduation thesis (đồ án tốt nghiệp)** — Ho Chi Minh City University of Technology and Education (HCMUTE).
+> **Mechanical design project** — Ho Chi Minh City University of Technology and Education (HCMUTE).
 > Complete mechanical design of a ceiling-mounted 3-DOF Delta parallel robot for high-speed pick-and-place, benchmarked against the ABB IRB 360 FlexPicker.
 
-This repository contains the SolidWorks CAD model, the MATLAB analysis and simulation code, the finite-element (FEA) results, and the machining drawings. Every conclusion is backed by data read back from the model or the solver — no assumed figures. All figures below are taken from the thesis report.
+This repository contains the SolidWorks CAD model, the MATLAB analysis and simulation code, the finite-element (FEA) results, and the machining drawings. Every conclusion is backed by data read back from the model or the solver — no assumed figures. All figures below are taken from the design analysis and FEA results.
 
 ---
 
@@ -39,7 +39,7 @@ This repository contains the SolidWorks CAD model, the MATLAB analysis and simul
 
 <p align="center"><b>Fig. 2.1 / 2.3.</b> Basic structure of the three-arm RUU Delta robot (left); CAD model and the general geometric parameters R, r, L, b, H (right).</p>
 
-## 2. Kinematics verification (MATLAB R2025a)
+## 2. Kinematics verification
 
 The inverse and forward kinematics were implemented independently and cross-checked:
 
@@ -150,7 +150,7 @@ SolidWorks Simulation, static studies on the load-bearing parts with the peak dy
 
 ---
 
-## 8. Thesis chapters
+## 8. Design report — chapters
 
 | Chapter | Title | What it covers |
 |---|---|---|
@@ -163,4 +163,4 @@ SolidWorks Simulation, static studies on the load-bearing parts with the peak dy
 
 ---
 
-<sub>The thesis document, third-party vendor CAD and reference papers are not included in this repository (see `.gitignore`). Academic work — all rights reserved; please cite if reused. © JohnNguyen205, HCMUTE.</sub>
+<sub>The full design report, third-party vendor CAD and reference papers are not included in this repository (see `.gitignore`). All rights reserved; please cite if reused. © JohnNguyen205, HCMUTE.</sub>

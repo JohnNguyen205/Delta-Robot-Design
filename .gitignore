@@ -54,8 +54,8 @@ swxJRNL*
 *-BenchMark-Solver.txt
 PerformanceLog.txt
 Result/
-MoPhong_Ben/MP_BEN_V2/
-MoPhong_Ben/khung_treo/*.CWR
+FEA_Simulation/MP_BEN_V2/
+FEA_Simulation/khung_treo/*.CWR
 
 # --- MATLAB / Simulink: build cache ---
 slprj/
@@ -75,3 +75,7 @@ Desktop.ini
 # --- Stray root files ---
 out_tmp.txt
 AGENTS.md
+
+# --- Agent working notes (local only, not published) ---
+CLAUDE.md
+TIENDO.md
