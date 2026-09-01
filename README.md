@@ -174,7 +174,43 @@ The initially considered TPM-010S-061T (T2B 80 N·m) is rejected — M_yc 112.5 
 
 <p align="center"><b>Fig. 4.1.</b> 3D design model in SolidWorks.</p>
 
-## 7. Structural validation (FEA)
+## 7. Vacuum gripper (end effector)
+
+The end effector is a vacuum gripper at the platform centre, facing down, that
+picks parts off the conveyor and sorts them by shape (triangle / circle /
+square). The cup, valve, tubing and sensor mass is **not** part of the 2 kg
+payload — it is added to the dynamic model once the hardware is fixed; the grip
+is sized against the 2 kg payload alone.
+
+Required suction force (weight + lift inertia, with a pull-off safety factor):
+
+$$F_s = k\,m\,(g + a_z)$$
+
+Total cup area and minimum working vacuum for $n$ round cups of diameter $d$ and
+effective efficiency $\eta$:
+
+$$S = n\,\pi\,\frac{d^{2}}{4}, \qquad p_\text{req} = \frac{F_s}{\eta\,S}, \qquad F_\text{cap} = \eta\,p_\text{max}\,S \ge F_s$$
+
+With $k = 2.0$, $m = 2.0$ kg, $g = 9.81$, $a_z = 11.58$ m/s², $n = 2$ cups,
+$d = 40$ mm, $\eta = 0.70$:
+
+| Quantity | Value |
+|---|---|
+| Required suction force $F_s$ | 85.56 N |
+| Total cup area $S$ | 2.513 × 10⁻³ m² |
+| Minimum vacuum $p_\text{req}$ | 48.7 kPa |
+| Holding force at $p_\text{max}=60$ kPa | 105.6 N ≥ 85.56 N ✓ |
+
+Preliminary cup layout by shape: triangle 2 × Ø40 (or 4 × Ø30), circle 2 × Ø40
+symmetric about the centre, square 4 × Ø30.
+
+<p align="center">
+  <img src="docs/figures/fig-2-10-suction-force.png" width="45%" alt="Force diagram of a part lifted vertically by a vacuum cup">
+</p>
+
+<p align="center"><b>Fig. 2.10.</b> Forces on a part lifted vertically by the vacuum cup: suction force F<sub>s</sub> up, weight + lift inertia F = F<sub>g</sub> + F<sub>a</sub> down.</p>
+
+## 8. Structural validation (FEA)
 
 SolidWorks Simulation, static studies on the load-bearing parts with the peak dynamic loads from §4, including a mesh-convergence sweep and a full-workspace multi-pose sweep.
 
@@ -195,7 +231,7 @@ SolidWorks Simulation, static studies on the load-bearing parts with the peak dy
 
 ---
 
-## 8. Electrical & control system
+## 9. Electrical & control system
 
 The control system is a Siemens motion-control stack. An industrial PC (**SIMATIC IPC**) runs the vision pipeline and streams pick coordinates over **PROFINET** to a **SIMOTION D** motion controller, which carries a built-in Delta technology object (synchronous three-axis interpolation). SIMOTION drives three **SINAMICS S120** motor modules over **DRIVE-CLiQ**, one per arm, each powering a **TPMA010S-055T** gearmotor with incremental-encoder feedback. The three motor modules share one Active Line Module (common DC bus), so braking energy is recovered between axes.
 
@@ -226,7 +262,7 @@ Servo power is **320 V AC** (per the TPMA010S-055T datasheet); SIMOTION, the SIR
 
 <p align="center"><b>Fig. 5.7.</b> Power distribution — AC mains through E-Stop and fuse to 320 V AC for the three drives and a 24 V DC control supply for the IPC, SIMOTION D and SIRIUS relay.</p>
 
-## 9. Machine vision (image processing)
+## 10. Machine vision (image processing)
 
 Each frame is converted from BGR to HSV, then two branches run in parallel. The **shape** branch performs corner / blob detection and template matching, classifying every object as circle, square or triangle. The **colour** branch applies fixed HSV thresholds for red, green and yellow and detects blobs by area. The two results are merged into a `(colour, shape)` label per object, and the corresponding pick coordinate is sent to the IPC.
 
@@ -254,7 +290,7 @@ A pixel coordinate (u, v) is mapped to a physical pick point (X, Y) through thre
 
 ---
 
-## 10. Design report — chapters
+## 11. Design report — chapters
 
 | Chapter | Title | What it covers |
 |---|---|---|

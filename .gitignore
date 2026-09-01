@@ -31,6 +31,7 @@ Fomat/
 # --- Backups (copy-file convention, not version-controlled) ---
 **/Backup/
 *_backup_*
+*_backup.m
 *_premat*
 *_presteel*
 *_pretach*
@@ -71,6 +72,12 @@ codegen/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# --- Regenerable COM-script run logs (drawing generation) ---
+**/log_*.txt
+**/log2_*.txt
+FEA_Simulation/[0-9][0-9]_probe.ps1
+FEA_Simulation/Info_MPBen.docx
 
 # --- Stray root files ---
 out_tmp.txt

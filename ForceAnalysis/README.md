@@ -17,7 +17,6 @@ joint torques through the Jacobian, motor sizing including bicep weight/inertia
 | `moment_angle_sweep.m` | joint moment vs tilt angle, CSV/MAT + peak plot |
 | `fea_load_params.m` | exports the peak loads consumed by `../FEA_Simulation` |
 | `ThuyetMinh_ChonDongCo.md` | detailed motor-selection write-up (Vietnamese) |
-| `*_backup.m` | earlier versions kept for comparison |
 | `figs/`, `out/` | result figures / logs / `.mat` |
 
 ## How to run
